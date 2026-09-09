@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tous les produits — WooExtractor</title>
+<meta name="description" content="Bûches, packs, allumage et accessoires de cheminée : parcourez les 42 produits disponibles en stock chez WooExtractor.">
+<link rel="canonical" href="https://wooextractor.com/pages/produits">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#A8391B">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="WooExtractor">
+<meta property="og:title" content="Tous les produits — WooExtractor">
+<meta property="og:description" content="Bûches, packs, allumage et accessoires de cheminée disponibles en stock.">
+<meta property="og:url" content="https://wooextractor.com/pages/produits">
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<header id="site-header"></header>
+
+<main>
+  <div class="page-header">
+    <div class="wrap">
+      <h1>Tous les produits</h1>
+      <p>42 références en stock : bois de chauffage, packs d'hiver, allumage et accessoires de cheminée. Ajoutez au panier en un clic.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="product-toolbar">
+        <div class="filter-row" id="filter-row"></div>
+        <div class="toolbar-tools">
+          <input type="search" id="search-input" class="field-input" placeholder="Rechercher un produit">
+          <select id="sort-select" class="field-select">
+            <option value="default">Tri : pertinence</option>
+            <option value="price-asc">Prix croissant</option>
+            <option value="price-desc">Prix décroissant</option>
+            <option value="name-asc">Nom A → Z</option>
+          </select>
+        </div>
+      </div>
+      <p class="result-count" id="result-count"></p>
+      <div class="product-grid" id="product-grid"></div>
+      <div class="empty-state" id="empty-state" style="display:none;">
+        <p>Aucun produit ne correspond à votre recherche. Essayez un autre mot-clé ou une autre catégorie.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="site-footer"></footer>
+
+<script src="/assets/js/icons.js"></script>
+<script src="/assets/js/products.js"></script>
+<script src="/assets/js/cart.js"></script>
+<script src="/assets/js/product-render.js"></script>
+<script src="/assets/js/layout.js"></script>
+<script src="/assets/js/catalogue.js"></script>
+</body>
+</html>

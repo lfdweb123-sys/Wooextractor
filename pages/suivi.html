@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Suivi de commande — WooExtractor</title>
+<meta name="description" content="Retrouvez le détail et le statut de vos commandes WooExtractor, enregistrées sur cet appareil.">
+<link rel="canonical" href="https://wooextractor.com/pages/suivi">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#A8391B">
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<header id="site-header"></header>
+
+<main>
+  <div class="page-header">
+    <div class="wrap">
+      <h1>Suivi de commande</h1>
+      <p>Vos commandes sont enregistrées directement sur cet appareil, dans ce navigateur. Elles ne sont visibles que depuis cet ordinateur ou ce téléphone, à condition de ne pas avoir effacé les données de navigation.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="track-search">
+        <input type="text" id="track-input" class="field-input" placeholder="Numéro de commande, ex. DD-260908-A1B2C">
+        <button type="button" class="btn btn-primary" id="track-btn">Rechercher</button>
+      </div>
+      <div id="track-result"></div>
+
+      <div class="section-head" style="margin-top:8px;">
+        <div>
+          <h2>Mes commandes sur cet appareil</h2>
+        </div>
+      </div>
+      <div id="orders-list"></div>
+      <div id="orders-empty" class="empty-state" style="display:none;">
+        <p>Aucune commande n'est enregistrée sur cet appareil pour le moment.</p>
+        <a href="/pages/produits" class="btn btn-primary" style="margin-top:16px;">Voir les produits</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="site-footer"></footer>
+
+<script src="/assets/js/icons.js"></script>
+<script src="/assets/js/products.js"></script>
+<script src="/assets/js/cart.js"></script>
+<script src="/assets/js/product-render.js"></script>
+<script src="/assets/js/orders-render.js"></script>
+<script src="/assets/js/layout.js"></script>
+<script src="/assets/js/suivi.js"></script>
+</body>
+</html>

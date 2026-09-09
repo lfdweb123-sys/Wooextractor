@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /pages/panier
+Disallow: /pages/checkout
+Disallow: /pages/order-success
+Disallow: /api/
+
+Sitemap: https://wooextractor.com/sitemap.xml

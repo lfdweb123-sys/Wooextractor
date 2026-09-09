@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mon panier — WooExtractor</title>
+<meta name="description" content="Votre panier WooExtractor, conservé sur cet appareil.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://wooextractor.com/pages/panier">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#A8391B">
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<header id="site-header"></header>
+
+<main>
+  <div class="page-header">
+    <div class="wrap">
+      <h1>Mon panier</h1>
+      <p>Votre panier est conservé sur cet appareil. Vérifiez les quantités avant de passer commande.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="wrap">
+
+      <div id="cart-empty" class="empty-state" style="display:none;">
+        <span data-icon="empty" style="display:inline-block;"></span>
+        <p>Votre panier est vide pour le moment.</p>
+        <a href="/pages/produits" class="btn btn-primary" style="margin-top:16px;">Découvrir les produits</a>
+      </div>
+
+      <div id="cart-filled" class="cart-layout" style="display:none;">
+        <div>
+          <div class="cart-list" id="cart-list"></div>
+        </div>
+        <aside class="summary-card">
+          <h3>Récapitulatif</h3>
+          <div class="summary-row"><span>Sous-total</span><span id="sum-subtotal"></span></div>
+          <div class="summary-row"><span>Livraison</span><span id="sum-shipping"></span></div>
+          <p id="shipping-hint" style="font-size:0.8rem;margin-top:-4px;"></p>
+          <div class="summary-row total"><span>Total</span><span id="sum-total"></span></div>
+          <a href="/pages/checkout" class="btn btn-primary btn-block" style="margin-top:18px;">Passer la commande</a>
+          <a href="/pages/produits" class="btn-ghost" style="display:block;margin-top:12px;text-align:center;">Continuer mes achats</a>
+        </aside>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer id="site-footer"></footer>
+
+<script src="/assets/js/icons.js"></script>
+<script src="/assets/js/products.js"></script>
+<script src="/assets/js/cart.js"></script>
+<script src="/assets/js/product-render.js"></script>
+<script src="/assets/js/layout.js"></script>
+<script src="/assets/js/panier.js"></script>
+</body>
+</html>

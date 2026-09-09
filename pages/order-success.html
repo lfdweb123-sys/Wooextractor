@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Commande confirmée — WooExtractor</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#A8391B">
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<header id="site-header"></header>
+
+<main>
+  <section class="section">
+    <div class="wrap" style="max-width:720px;">
+
+      <div id="confirm-found" style="display:none;">
+        <div class="confirm-hero">
+          <div class="check"><span data-icon="check"></span></div>
+          <h1>Merci, votre commande est confirmée</h1>
+          <p style="margin-top:10px;">Un numéro de commande a été enregistré sur cet appareil. Conservez-le pour suivre votre livraison.</p>
+        </div>
+        <div id="order-summary"></div>
+        <div id="confirm-note" class="order-note" style="display:none;"></div>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:24px;">
+          <a href="/pages/suivi" class="btn btn-primary">Suivre ma commande</a>
+          <a href="/pages/produits" class="btn btn-outline">Continuer mes achats</a>
+        </div>
+      </div>
+
+      <div id="confirm-fallback" style="display:none;" class="empty-state">
+        <p>Votre paiement a bien été redirigé, mais nous ne retrouvons pas le détail de la commande sur cet appareil ou ce navigateur. Si le paiement a été validé chez votre prestataire, votre commande est bien enregistrée de leur côté.</p>
+        <a href="/pages/contact" class="btn btn-outline" style="margin-top:16px;">Contacter le service client</a>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer id="site-footer"></footer>
+
+<script src="/assets/js/icons.js"></script>
+<script src="/assets/js/products.js"></script>
+<script src="/assets/js/cart.js"></script>
+<script src="/assets/js/product-render.js"></script>
+<script src="/assets/js/orders-render.js"></script>
+<script src="/assets/js/layout.js"></script>
+<script src="/assets/js/order-success.js"></script>
+</body>
+</html>

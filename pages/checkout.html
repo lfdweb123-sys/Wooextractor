@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Commande — WooExtractor</title>
+<meta name="description" content="Finalisez votre commande WooExtractor : livraison, puis paiement par carte, virement ou cryptomonnaie.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://wooextractor.com/pages/checkout">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#A8391B">
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<header id="site-header"></header>
+
+<main>
+  <div class="page-header">
+    <div class="wrap">
+      <h1>Finaliser la commande</h1>
+      <div class="checkout-steps">
+        <span class="checkout-step"><span class="num">1</span> Panier</span>
+        <span class="checkout-step active"><span class="num">2</span> Livraison &amp; paiement</span>
+        <span class="checkout-step"><span class="num">3</span> Confirmation</span>
+      </div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="wrap">
+      <div id="checkout-empty" class="empty-state" style="display:none;">
+        <p>Votre panier est vide, impossible de passer commande.</p>
+        <a href="/pages/produits" class="btn btn-primary" style="margin-top:16px;">Voir les produits</a>
+      </div>
+
+      <form id="checkout-form" class="checkout-layout" style="display:none;" novalidate>
+        <div>
+          <fieldset>
+            <legend>Livraison</legend>
+            <div class="form-grid">
+              <div class="form-field"><label for="firstname">Prénom</label><input id="firstname" name="firstname" type="text" required><span class="field-error">Merci d'indiquer votre prénom.</span></div>
+              <div class="form-field"><label for="lastname">Nom</label><input id="lastname" name="lastname" type="text" required><span class="field-error">Merci d'indiquer votre nom.</span></div>
+              <div class="form-field"><label for="email">E-mail</label><input id="email" name="email" type="email" required><span class="field-error">Merci d'indiquer un e-mail valide.</span></div>
+              <div class="form-field"><label for="phone">Téléphone</label><input id="phone" name="phone" type="tel" required><span class="field-error">Merci d'indiquer votre téléphone.</span></div>
+              <div class="form-field full"><label for="address">Adresse</label><input id="address" name="address" type="text" required><span class="field-error">Merci d'indiquer votre adresse.</span></div>
+              <div class="form-field"><label for="postcode">Code postal</label><input id="postcode" name="postcode" type="text" required><span class="field-error">Merci d'indiquer votre code postal.</span></div>
+              <div class="form-field"><label for="city">Ville</label><input id="city" name="city" type="text" required><span class="field-error">Merci d'indiquer votre ville.</span></div>
+              <div class="form-field full"><label for="country">Pays</label>
+                <select id="country" name="country">
+                  <option value="France" selected>France</option>
+                  <option value="Belgique">Belgique</option>
+                  <option value="Suisse">Suisse</option>
+                  <option value="Luxembourg">Luxembourg</option>
+                </select>
+              </div>
+              <div class="form-field full"><label for="note">Note de livraison (facultatif)</label><textarea id="note" name="note" rows="3" placeholder="Portail, étage, créneau de livraison…"></textarea></div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Mode de paiement</legend>
+
+            <label class="pay-option" data-pay-option="card">
+              <div class="pay-option-head"><span><input type="radio" name="payment" value="card" checked> Carte bancaire</span> <span data-icon="card"></span></div>
+              <p>Paiement sécurisé par carte, traité directement par Stripe. Vos coordonnées bancaires ne transitent jamais par nos serveurs.</p>
+              <div class="card-field-wrap">
+                <div id="card-element" class="card-element-box"></div>
+                <div id="card-errors" class="field-error" style="display:block;min-height:16px;"></div>
+              </div>
+            </label>
+
+            <label class="pay-option" data-pay-option="crypto">
+              <div class="pay-option-head"><span><input type="radio" name="payment" value="crypto"> Cryptomonnaie</span> <span data-icon="coin"></span></div>
+              <p>Bitcoin, Ethereum, USDT et autres cryptomonnaies. Paiement sécurisé géré par NowPayments.</p>
+              <div class="crypto-select" id="crypto-select" style="display:none;">
+                <select id="crypto-currency" class="field-select">
+                  <option value="btc">Bitcoin (BTC)</option>
+                  <option value="eth">Ethereum (ETH)</option>
+                  <option value="usdttrc20">USDT (TRC20)</option>
+                  <option value="usdterc20">USDT (ERC20)</option>
+                  <option value="ltc">Litecoin (LTC)</option>
+                  <option value="bnbbsc">BNB (BSC)</option>
+                </select>
+              </div>
+            </label>
+
+            <label class="pay-option" data-pay-option="transfer">
+              <div class="pay-option-head"><span><input type="radio" name="payment" value="transfer"> Virement bancaire</span> <span data-icon="bank"></span></div>
+              <p>Réglez par virement depuis votre banque. Votre commande est préparée dès réception des fonds.</p>
+              <div class="bank-details-box" id="bank-details" style="display:none;">
+                <table class="legal-table">
+                  <tr><td>Bénéficiaire</td><td>Bridge Building Sp. Z.o.o.</td></tr>
+                  <tr><td>Banque</td><td>Banking Circle S.A.</td></tr>
+                  <tr><td>IBAN</td><td>LU034080000029652683</td></tr>
+                  <tr><td>BIC / SWIFT</td><td>BCIRLULL</td></tr>
+                </table>
+                <p style="font-size:0.82rem;margin-top:10px;">Indiquez le numéro de commande en référence du virement une fois celui-ci généré.</p>
+              </div>
+            </label>
+
+            <label class="pay-option" data-pay-option="later">
+              <div class="pay-option-head"><span><input type="radio" name="payment" value="later"> Commander sans payer maintenant</span> <span data-icon="mail"></span></div>
+              <p>Votre commande est enregistrée immédiatement. Nous vous envoyons ensuite un lien de paiement sécurisé Payoneer par e-mail pour régler.</p>
+            </label>
+          </fieldset>
+
+          <div id="form-msg" class="form-msg"></div>
+          <button type="submit" class="btn btn-primary btn-block" id="submit-btn" style="margin-top:8px;">Payer maintenant</button>
+          <p class="order-note">Aucune donnée n'est stockée sur un serveur : votre commande reste enregistrée sur cet appareil pour que vous puissiez la retrouver depuis la page « Suivi de commande ».</p>
+        </div>
+
+        <aside class="summary-card">
+          <h3>Votre commande</h3>
+          <div id="checkout-items"></div>
+          <div class="summary-row"><span>Sous-total</span><span id="co-subtotal"></span></div>
+          <div class="summary-row"><span>Livraison</span><span id="co-shipping"></span></div>
+          <div class="summary-row total"><span>Total</span><span id="co-total"></span></div>
+        </aside>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer id="site-footer"></footer>
+
+<script src="https://js.stripe.com/v3/"></script>
+<script src="/assets/js/icons.js"></script>
+<script src="/assets/js/products.js"></script>
+<script src="/assets/js/cart.js"></script>
+<script src="/assets/js/product-render.js"></script>
+<script src="/assets/js/layout.js"></script>
+<script src="/assets/js/checkout.js"></script>
+</body>
+</html>
