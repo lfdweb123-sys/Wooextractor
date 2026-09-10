@@ -7,9 +7,7 @@
 const CATEGORIES = [
   { key: 'bois-chauffage', label: 'Bois de chauffage', short: 'Bûches & essences', img: 'https://images.pexels.com/photos/128639/pexels-photo-128639.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=700' },
   { key: 'packs', label: 'Packs & offres', short: 'Réserves d\'hiver', img: 'https://images.pexels.com/photos/2203077/pexels-photo-2203077.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=700' },
-  { key: 'allumage', label: 'Allumage & combustion', short: 'Démarrage du feu', img: 'https://images.pexels.com/photos/19899577/pexels-photo-19899577/free-photo-of-fire-burning-in-basket-at-night.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=700' },
-  { key: 'accessoires', label: 'Accessoires cheminée & poêle', short: 'Rangement & manipulation', img: null },
-  { key: 'entretien', label: 'Entretien cheminée & poêle', short: 'Ramonage & nettoyage', img: null }
+  { key: 'allumage', label: 'Allumage & combustion', short: 'Démarrage du feu', img: 'https://images.pexels.com/photos/19899577/pexels-photo-19899577/free-photo-of-fire-burning-in-basket-at-night.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=700' }
 ];
 
 function px(id, file){
@@ -97,65 +95,7 @@ const PRODUCTS = [
     media:{type:'photo', src:px(31797933,'free-photo-of-warm-campfire-flames-in-outdoor-setting.jpeg'), alt:'Sac de granulés de bois'} },
   { id:24, category:'allumage', name:'Pellets premium – sac', unit:'sac de 15 kg', price:9.90, stock:100, badge:'Premium',
     desc:'Pellets premium à haut pouvoir calorifique et faible humidité, pour un rendement optimal de votre appareil.',
-    media:{type:'photo', src:px(37816769,'free-photo-of-warm-cozy-outdoor-fire-pit-in-garden-setting.jpeg'), alt:'Pellets premium en sac'} },
-
-  // ---------------- ACCESSOIRES CHEMINÉE ET POÊLE ----------------
-  { id:25, category:'accessoires', name:'Panier à bois', unit:'unité', price:39.90, stock:100,
-    desc:'Panier robuste pour transporter et présenter vos bûches près du poêle, en armature métal renforcée.',
-    media:{type:'icon', icon:'basket', alt:'Panier à bois'} },
-  { id:26, category:'accessoires', name:'Porte-bûches intérieur', unit:'unité', price:44.90, stock:100,
-    desc:'Range-bûches compact pour l\'intérieur, structure stable et pieds antidérapants.',
-    media:{type:'icon', icon:'rack', alt:'Porte-bûches intérieur'} },
-  { id:27, category:'accessoires', name:'Porte-bûches extérieur', unit:'unité', price:79.90, stock:100,
-    desc:'Range-bûches extérieur avec toit de protection contre la pluie, grande contenance.',
-    media:{type:'icon', icon:'rack', alt:'Porte-bûches extérieur'} },
-  { id:28, category:'accessoires', name:'Serviteur de cheminée 4 pièces', unit:'set de 4', price:59.90, stock:100, badge:'Best-seller',
-    desc:'Pelle, pince, tisonnier et balayette sur pied stable en acier. L\'essentiel pour entretenir votre foyer.',
-    media:{type:'icon', icon:'toolset', alt:'Serviteur de cheminée 4 pièces'} },
-  { id:29, category:'accessoires', name:'Pelle à cendres', unit:'unité', price:14.90, stock:100,
-    desc:'Pelle robuste au manche long, pour retirer les cendres sans se pencher ni se brûler.',
-    media:{type:'icon', icon:'shovel', alt:'Pelle à cendres'} },
-  { id:30, category:'accessoires', name:'Balayette à cheminée', unit:'unité', price:12.90, stock:100,
-    desc:'Balayette à poils résistants à la chaleur pour nettoyer facilement le foyer entre deux flambées.',
-    media:{type:'icon', icon:'brush', alt:'Balayette à cheminée'} },
-  { id:31, category:'accessoires', name:'Pince à bûches', unit:'unité', price:24.90, stock:100,
-    desc:'Pince longue pour déplacer et repositionner les bûches en toute sécurité, sans approcher la main du feu.',
-    media:{type:'icon', icon:'tongs', alt:'Pince à bûches'} },
-  { id:32, category:'accessoires', name:'Tisonnier', unit:'unité', price:19.90, stock:100,
-    desc:'Tisonnier en acier pour attiser les braises et repositionner les bûches en cours de combustion.',
-    media:{type:'icon', icon:'poker', alt:'Tisonnier'} },
-  { id:33, category:'accessoires', name:'Gants de protection anti-chaleur', unit:'paire', price:22.90, stock:100,
-    desc:'Gants renforcés résistants à la chaleur, pour manipuler bûches et accessoires en toute sécurité.',
-    media:{type:'icon', icon:'glove', alt:'Gants de protection anti-chaleur'} },
-  { id:34, category:'accessoires', name:'Seau à cendres', unit:'unité', price:34.90, stock:100,
-    desc:'Seau étanche avec couvercle pour stocker et transporter les cendres froides sans salir votre intérieur.',
-    media:{type:'icon', icon:'bucket', alt:'Seau à cendres'} },
-  { id:35, category:'accessoires', name:'Sac à bois de transport', unit:'unité', price:17.90, stock:100,
-    desc:'Sac renforcé à anses solides pour transporter vos bûches de l\'extérieur jusqu\'au foyer sans salissures.',
-    media:{type:'icon', icon:'bag', alt:'Sac à bois de transport'} },
-  { id:36, category:'accessoires', name:'Housse de protection pour bois', unit:'unité', price:29.90, stock:100,
-    desc:'Housse imperméable et respirante pour protéger votre stère de bois des intempéries toute l\'année.',
-    media:{type:'icon', icon:'cover', alt:'Housse de protection pour bois'} },
-
-  // ---------------- ENTRETIEN CHEMINÉE / POÊLE ----------------
-  { id:37, category:'entretien', name:'Bûche de ramonage', unit:'unité', price:13.90, stock:100,
-    desc:'Bûche chimique qui facilite le décollement des dépôts de bistre dans le conduit entre deux ramonages mécaniques.',
-    media:{type:'icon', icon:'sparklog', alt:'Bûche de ramonage'} },
-  { id:38, category:'entretien', name:'Kit de ramonage', unit:'kit complet', price:69.90, stock:100, badge:'Best-seller',
-    desc:'Kit complet avec cannes flexibles et hérisson, pour ramoner vous-même conduits droits et coudés.',
-    media:{type:'icon', icon:'kitbox', alt:'Kit de ramonage'} },
-  { id:39, category:'entretien', name:'Hérisson de ramonage', unit:'unité', price:39.90, stock:100,
-    desc:'Hérisson à brins souples adapté aux conduits maçonnés et métalliques, compatible cannes standards.',
-    media:{type:'icon', icon:'radialbrush', alt:'Hérisson de ramonage'} },
-  { id:40, category:'entretien', name:'Kit de nettoyage cheminée', unit:'kit complet', price:27.90, stock:100,
-    desc:'Brosses, grattoir et chiffons réunis pour l\'entretien courant du foyer et de la vitre.',
-    media:{type:'icon', icon:'kitbox', alt:'Kit de nettoyage cheminée'} },
-  { id:41, category:'entretien', name:'Décrassant pour vitre de poêle', unit:'flacon 500 ml', price:9.90, stock:100,
-    desc:'Décrassant puissant qui dissout les dépôts de suie tenaces sur la vitre de votre poêle.',
-    media:{type:'icon', icon:'spray', alt:'Décrassant pour vitre de poêle'} },
-  { id:42, category:'entretien', name:'Nettoyant vitre cheminée', unit:'flacon 500 ml', price:8.90, stock:100,
-    desc:'Nettoyant d\'entretien régulier pour conserver une vitre claire et profiter pleinement de vos flambées.',
-    media:{type:'icon', icon:'spray', alt:'Nettoyant vitre cheminée'} }
+    media:{type:'photo', src:px(37816769,'free-photo-of-warm-cozy-outdoor-fire-pit-in-garden-setting.jpeg'), alt:'Pellets premium en sac'} }
 ];
 
 function getCategoryLabel(key){
