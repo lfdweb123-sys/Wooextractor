@@ -57,14 +57,13 @@ function renderFooter(){
       <div class="footer-grid">
         <div>
           <h4>WooExtractor</h4>
-          <p>Bois de chauffage, packs d'hiver et accessoires de cheminée sélectionnés pour tenir toute la saison froide.</p>
+          <p>Bois de chauffage, packs d'hiver et allumage sélectionnés pour tenir toute la saison froide.</p>
         </div>
         <div>
           <h4>Boutique</h4>
           <ul>
             <li><a href="/pages/produits">Tous les produits</a></li>
             <li><a href="/pages/produits?cat=packs">Packs &amp; offres</a></li>
-            <li><a href="/pages/produits?cat=accessoires">Accessoires</a></li>
             <li><a href="/pages/panier">Mon panier</a></li>
           </ul>
         </div>
@@ -111,6 +110,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let path = window.location.pathname;
   if(path.length > 1 && path.endsWith('/')) path = path.slice(0, -1);
   if(path.endsWith('.html')) path = path.replace(/\/index\.html$/, '/').replace(/\.html$/, '');
-  renderHeader(path || '/');
-  renderFooter();
+  try{ renderHeader(path || '/'); }catch(err){ console.error('Erreur en-tête :', err); }
+  try{ renderFooter(); }catch(err){ console.error('Erreur pied de page :', err); }
 });
