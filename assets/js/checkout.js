@@ -105,9 +105,150 @@ document.addEventListener('DOMContentLoaded', () => {
     }).catch(err => console.warn('Notification marchand non envoyée :', err));
   }
 
+  /* ============================================================
+     Vérification e-mail par code OTP (4 chiffres)
+     Utilisée pour les modes "transfer" et "later".
+     ============================================================ */
+  const otpBlock = document.getElementById('otp-block');
+  const otpCodeInput = document.getElementById('otp-code');
+  const otpResendBtn = document.getElementById('otp-resend');
+  const otpHint = document.getElementById('otp-hint');
+  const otpError = document.getElementById('otp-error');
+
+  let otpToken = null;
+  let otpEmail = null;
+  let otpResendTimer = null;
+
+  function resetOtpUi(){
+    if(otpBlock) otpBlock.style.display = 'none';
+    if(otpCodeInput) otpCodeInput.value = '';
+    if(otpError){ otpError.textContent = ''; otpError.style.display = 'none'; }
+    if(otpResendBtn){ otpResendBtn.disabled = false; otpResendBtn.textContent = 'Renvoyer le code'; }
+    if(otpResendTimer){ clearInterval(otpResendTimer); otpResendTimer = null; }
+    otpToken = null;
+    otpEmail = null;
+  }
+
+  function startResendCooldown(seconds){
+    let remaining = seconds;
+    otpResendBtn.disabled = true;
+    otpResendBtn.textContent = `Renvoyer le code (${remaining}s)`;
+    otpResendTimer = setInterval(() => {
+      remaining -= 1;
+      if(remaining <= 0){
+        clearInterval(otpResendTimer);
+        otpResendTimer = null;
+        otpResendBtn.disabled = false;
+        otpResendBtn.textContent = 'Renvoyer le code';
+      } else {
+        otpResendBtn.textContent = `Renvoyer le code (${remaining}s)`;
+      }
+    }, 1000);
+  }
+
+  async function sendOtpCode(email){
+    const res = await fetch('/api/otp-send', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email })
+    });
+    const data = await res.json().catch(() => ({}));
+    if(!res.ok || !data.token){
+      throw new Error(data.message || "Impossible d'envoyer le code de vérification.");
+    }
+    otpToken = data.token;
+    otpEmail = email;
+    return data.token;
+  }
+
+  async function verifyOtpCode(code){
+    const res = await fetch('/api/otp-verify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token: otpToken, code })
+    });
+    const data = await res.json().catch(() => ({}));
+    if(!res.ok || !data.ok){
+      throw new Error(data.message || 'Code incorrect.');
+    }
+    return true;
+  }
+
+  /**
+   * Demande l'envoi d'un code, affiche le bloc OTP et attend la saisie.
+   * Retourne une promesse résolue quand le code est vérifié.
+   * Rejette en cas d'erreur ou d'annulation.
+   */
+  async function requestEmailVerification(email){
+    await sendOtpCode(email);
+
+    if(otpBlock){
+      otpBlock.style.display = 'block';
+      otpHint.textContent = `Un code à 4 chiffres a été envoyé à ${email}. Il est valable 10 minutes.`;
+      otpError.style.display = 'none';
+      otpCodeInput.value = '';
+      otpCodeInput.focus();
+    }
+    startResendCooldown(30);
+
+    // Le code est validé via le bouton dédié dans le bloc OTP.
+    // On retourne une promesse qui sera résolue par le handler du bouton.
+    return new Promise((resolve, reject) => {
+      const validateBtn = document.getElementById('otp-validate');
+      const onValidate = async () => {
+        const code = (otpCodeInput.value || '').trim();
+        if(!/^\d{4}$/.test(code)){
+          otpError.textContent = 'Saisissez les 4 chiffres du code.';
+          otpError.style.display = 'block';
+          return;
+        }
+        validateBtn.disabled = true;
+        validateBtn.textContent = 'Vérification…';
+        try{
+          await verifyOtpCode(code);
+          cleanup();
+          resolve(true);
+        }catch(err){
+          otpError.textContent = err.message;
+          otpError.style.display = 'block';
+          validateBtn.disabled = false;
+          validateBtn.textContent = 'Valider le code';
+        }
+      };
+      const onResend = async () => {
+        try{
+          await sendOtpCode(otpEmail);
+          otpHint.textContent = `Un nouveau code a été envoyé à ${otpEmail}.`;
+          otpError.style.display = 'none';
+          otpCodeInput.value = '';
+          otpCodeInput.focus();
+          startResendCooldown(30);
+        }catch(err){
+          otpError.textContent = err.message;
+          otpError.style.display = 'block';
+        }
+      };
+      const onCancel = () => {
+        cleanup();
+        reject(new Error('Vérification annulée.'));
+      };
+      function cleanup(){
+        validateBtn.removeEventListener('click', onValidate);
+        otpResendBtn.removeEventListener('click', onResend);
+      }
+      document.getElementById('otp-validate').addEventListener('click', onValidate);
+      otpResendBtn.addEventListener('click', onResend);
+      // Pas de bouton annuler dédié, mais on peut en ajouter un si besoin
+    });
+  }
+
+  /* ============================================================
+     Soumission du formulaire
+     ============================================================ */
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     clearMsg();
+    resetOtpUi();
 
     if(!validate()){
       setMsg('Merci de compléter les champs de livraison en surbrillance avant de continuer.', 'error');
@@ -230,10 +371,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ---- Virement bancaire / commande sans paiement immédiat ---- */
+    // Vérification de l'e-mail par code OTP avant d'enregistrer la commande.
+    submitBtn.textContent = 'Vérification de l\'e-mail…';
+    try{
+      await requestEmailVerification(customer.email);
+    }catch(err){
+      setMsg(err.message || 'La vérification de l\'e-mail a échoué.', 'error');
+      resetSubmitButton();
+      return;
+    }
+
+    // À ce stade, l'e-mail est vérifié : on enregistre la commande.
     order.status = paymentMethod === 'transfer' ? 'attente_virement' : 'en_attente_lien_paiement';
     Orders.create(order);
     Cart.clear();
     notifyMerchant(order);
     window.location.href = `/pages/order-success?order_id=${encodeURIComponent(order.id)}`;
   });
+
+  // Reset du bloc OTP quand on change de mode de paiement
+  payOptions.forEach(opt => opt.addEventListener('click', resetOtpUi));
 });
