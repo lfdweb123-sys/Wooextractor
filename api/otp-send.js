@@ -1,18 +1,40 @@
 // api/otp-send.js — Vercel Serverless Function
-// Envoie un code à 4 chiffres par e-mail au client pour vérifier son adresse
-// avant d'enregistrer une commande "sans paiement immédiat".
+// Envoie un code à 4 chiffres par e-mail pour vérifier l'adresse du client
+// avant d'enregistrer une commande "sans paiement immédiat" ou "virement".
 // Aucun stockage : le code est signé (HMAC) et renvoyé au client sous forme
-// de token, que le client renverra à la vérification.
+// de token. Rate limit en mémoire par IP et par e-mail.
 
 import crypto from 'crypto';
 import { sendBrevoEmail } from '../lib/brevo.js';
 
-const TTL_MS = 10 * 60 * 1000; // 10 minutes
+const TTL_MS = 10 * 60 * 1000;      // validité du code : 10 minutes
+const RL_WINDOW_MS = 15 * 60 * 1000; // fenêtre de rate limit : 15 minutes
+const RL_MAX_PER_IP = 5;             // max d'envois par IP sur la fenêtre
+const RL_MAX_PER_EMAIL = 3;          // max d'envois par e-mail sur la fenêtre
+
+// Rate limit en mémoire (par instance Vercel). Suffisant pour un petit volume.
+const rlIp = new Map();
+const rlEmail = new Map();
+
+function checkRate(map, key, max) {
+  const now = Date.now();
+  const arr = (map.get(key) || []).filter(t => now - t < RL_WINDOW_MS);
+  if (arr.length >= max) return false;
+  arr.push(now);
+  map.set(key, arr);
+  return true;
+}
 
 function sign(code, ts) {
   const secret = process.env.OTP_SECRET;
   if (!secret) throw new Error('OTP_SECRET manquant');
   return crypto.createHmac('sha256', secret).update(`${code}.${ts}`).digest('hex');
+}
+
+function clientIp(req) {
+  const fwd = req.headers['x-forwarded-for'];
+  if (typeof fwd === 'string' && fwd.length) return fwd.split(',')[0].trim();
+  return req.socket?.remoteAddress || 'unknown';
 }
 
 export default async function handler(req, res) {
@@ -30,7 +52,16 @@ export default async function handler(req, res) {
     return res.status(500).json({ message: 'Configuration serveur incomplète.' });
   }
 
-  // Code à 4 chiffres, avec leading zeros possibles (0000–9999)
+  const ip = clientIp(req);
+  const emailKey = email.trim().toLowerCase();
+
+  if (!checkRate(rlIp, ip, RL_MAX_PER_IP)) {
+    return res.status(429).json({ message: 'Trop de demandes. Réessayez dans quelques minutes.' });
+  }
+  if (!checkRate(rlEmail, emailKey, RL_MAX_PER_EMAIL)) {
+    return res.status(429).json({ message: 'Trop de codes envoyés à cette adresse. Réessayez plus tard.' });
+  }
+
   const code = String(crypto.randomInt(0, 10000)).padStart(4, '0');
   const ts = Date.now();
   const token = `${code}.${sign(code, ts)}.${ts}`;
