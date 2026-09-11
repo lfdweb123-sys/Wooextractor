@@ -107,6 +107,29 @@
             </label>
           </fieldset>
 
+          <!-- Bloc de vérification e-mail par code OTP -->
+<div id="otp-block" class="otp-block" style="display:none;">
+  <h4 class="otp-title">Vérification de votre e-mail</h4>
+  <p id="otp-hint" class="otp-hint">Un code à 4 chiffres vous a été envoyé.</p>
+  <div class="otp-row">
+    <input
+      id="otp-code"
+      class="otp-input"
+      type="text"
+      inputmode="numeric"
+      autocomplete="one-time-code"
+      maxlength="4"
+      pattern="\d{4}"
+      placeholder="••••"
+      aria-label="Code à 4 chiffres">
+    <button type="button" id="otp-validate" class="btn btn-primary">Valider le code</button>
+  </div>
+  <div class="otp-actions">
+    <button type="button" id="otp-resend" class="btn btn-link">Renvoyer le code</button>
+  </div>
+  <p id="otp-error" class="field-error" style="display:none;"></p>
+</div>
+          
           <div id="form-msg" class="form-msg"></div>
           <button type="submit" class="btn btn-primary btn-block" id="submit-btn" style="margin-top:8px;">Payer maintenant</button>
           <p class="order-note">Aucune donnée n'est stockée sur un serveur : votre commande reste enregistrée sur cet appareil pour que vous puissiez la retrouver depuis la page « Suivi de commande ».</p>
