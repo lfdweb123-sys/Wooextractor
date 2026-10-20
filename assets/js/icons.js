@@ -1,6 +1,9 @@
 /* Icônes SVG traits fins, réutilisées pour les accessoires (pas de photo produit)
    et les pictogrammes d'interface. Aucune emoji dans tout le site. */
 const ICONS = {
+  whatsapp: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l1.65-4.8A8.5 8.5 0 1 1 8 19.4z"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.5-2-1-1 .8c-.9-.4-1.7-1.2-2.1-2.1l.8-1-1-2z"/></svg>',
+  headset: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/><path d="M19 20c0 1.2-1.5 2-4 2h-2"/></svg>',
+  quote: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg>',
   basket: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h16l-1.6 9.2a2 2 0 0 1-2 1.8H7.6a2 2 0 0 1-2-1.8L4 10Z"/><path d="M8 10 9.5 4M16 10 14.5 4M2 10h20"/><path d="M9 13.5v4M12 13.5v4M15 13.5v4"/></svg>',
   rack: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V6M21 21V6"/><path d="M3 6h18M3 21h18"/><circle cx="8" cy="12" r="2.6"/><circle cx="13.4" cy="12" r="2.6"/><circle cx="18.4" cy="15" r="2.2"/></svg>',
   toolset: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V9M8 21V5M12 21v-8M16 21V7M20 21v-5"/><path d="M2 21h20"/></svg>',

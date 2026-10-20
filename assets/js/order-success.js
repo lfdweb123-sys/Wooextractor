@@ -56,6 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
     title.textContent = 'Commande enregistrée';
     intro.textContent = 'Aucun paiement n\'a été demandé pour le moment.';
     noteBox.style.display = 'block';
-    noteBox.innerHTML = `<p>Nous allons vous envoyer un lien de paiement sécurisé Payoneer par e-mail à <strong>${refreshed.customer.email}</strong> afin de finaliser le règlement de votre commande.</p>`;
+    noteBox.innerHTML = `<p>Nous allons vous envoyer un lien de paiement sécurisé par e-mail à <strong>${refreshed.customer.email}</strong> afin de finaliser le règlement de votre commande.</p>`;
   }
 });

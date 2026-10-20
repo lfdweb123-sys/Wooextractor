@@ -6,7 +6,7 @@
 // Aucune base de données.
 
 import crypto from 'crypto';
-import { sendBrevoEmail } from '../lib/brevo.js';
+import { sendBrevoEmail, emailLayout, infoRow, esc } from '../lib/brevo.js';
 
 function sortObject(obj) {
   if (typeof obj !== 'object' || obj === null) return obj;
@@ -43,14 +43,17 @@ export default async function handler(req, res) {
     await sendBrevoEmail({
       to: ADMIN_EMAIL,
       subject: `Paiement crypto confirmé — ${order_id || payment_id}`,
-      html: `<!DOCTYPE html><html><body style="font-family:Arial,sans-serif;background:#F5F1E9;padding:32px;">
-        <div style="max-width:480px;margin:0 auto;background:#fff;border:1px solid #E7DFD2;border-radius:10px;padding:24px;">
-          <h2 style="color:#201A15;margin:0 0 12px;">Paiement crypto confirmé</h2>
-          <p style="color:#4A3F35;font-size:14px;">Commande <strong>${order_id || '—'}</strong></p>
-          <p style="color:#4A3F35;font-size:14px;">Montant payé : ${pay_amount} ${String(pay_currency).toUpperCase()} (≈ ${sym}${Number(price_amount).toFixed(2)})</p>
-          <p style="color:#8A7F72;font-size:12px;margin-top:16px;">Réf. paiement NowPayments : ${payment_id}</p>
-        </div>
-      </body></html>`
+      html: emailLayout({
+        subtitle: 'Notification de paiement',
+        preheader: `Paiement crypto confirmé — ${order_id || payment_id}`,
+        body: `
+          <h2 class="title" style="margin:0 0 16px;font-size:20px;line-height:1.3;color:#201A15;">Paiement crypto confirmé</h2>
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+            ${infoRow('Commande', esc(order_id || '—'))}
+            ${infoRow('Montant payé', `${esc(pay_amount)} ${esc(String(pay_currency).toUpperCase())} (≈ ${sym}${Number(price_amount).toFixed(2)})`)}
+            ${infoRow('Réf. paiement', esc(payment_id))}
+          </table>`
+      })
     });
   }
 

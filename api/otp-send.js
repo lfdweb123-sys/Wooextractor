@@ -5,7 +5,7 @@
 // de token. Rate limit en mémoire par IP et par e-mail.
 
 import crypto from 'crypto';
-import { sendBrevoEmail } from '../lib/brevo.js';
+import { sendBrevoEmail, emailLayout } from '../lib/brevo.js';
 
 const TTL_MS = 10 * 60 * 1000;      // validité du code : 10 minutes
 const RL_WINDOW_MS = 15 * 60 * 1000; // fenêtre de rate limit : 15 minutes
@@ -66,13 +66,15 @@ export default async function handler(req, res) {
   const ts = Date.now();
   const token = `${code}.${sign(code, ts)}.${ts}`;
 
-  const html = `
-    <div style="font-family:Arial,Helvetica,sans-serif;max-width:480px;margin:0 auto;">
-      <h2 style="color:#201A15;">Vérification de votre e-mail</h2>
-      <p style="color:#4A3F35;">Voici votre code de confirmation :</p>
-      <p style="font-size:32px;font-weight:700;letter-spacing:8px;color:#A8391B;margin:24px 0;">${code}</p>
-      <p style="color:#8A7F72;font-size:13px;">Ce code est valable 10 minutes. Si vous n'êtes pas à l'origine de cette demande, ignorez cet e-mail.</p>
-    </div>`;
+  const html = emailLayout({
+    subtitle: 'Vérification de votre adresse e-mail',
+    preheader: `Votre code de confirmation : ${code}`,
+    body: `
+      <h2 class="title" style="margin:0 0 12px;font-size:20px;line-height:1.3;color:#201A15;">Vérification de votre e-mail</h2>
+      <p style="margin:0;color:#4A3F35;font-size:15px;">Voici votre code de confirmation :</p>
+      <p class="code" style="font-size:34px;font-weight:700;letter-spacing:8px;color:#A8391B;margin:22px 0;text-align:center;">${code}</p>
+      <p style="margin:0;color:#8A7F72;font-size:13px;line-height:1.5;">Ce code est valable 10 minutes. Si vous n'êtes pas à l'origine de cette demande, ignorez cet e-mail.</p>`
+  });
 
   const result = await sendBrevoEmail({
     to: email,

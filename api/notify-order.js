@@ -25,11 +25,11 @@ export default async function handler(req, res) {
 
   const headline = order.paymentMethod === 'transfer'
     ? 'Nouvelle commande — virement bancaire attendu'
-    : 'Nouvelle commande — paiement à envoyer par Payoneer';
+    : 'Nouvelle commande — lien de paiement à envoyer';
 
   const result = await sendBrevoEmail({
     to: ADMIN_EMAIL,
-    subject: `Commande ${order.id} — ${order.paymentMethod === 'transfer' ? 'virement à recevoir' : 'lien Payoneer à envoyer'}`,
+    subject: `Commande ${order.id} — ${order.paymentMethod === 'transfer' ? 'virement à recevoir' : 'lien de paiement à envoyer'}`,
     html: buildOrderEmailHtml(order, { headline })
   });
 

@@ -9,6 +9,7 @@ function renderHeader(activePath){
     { href:'/', label:'Accueil' },
     { href:'/pages/produits', label:'Tous les produits' },
     { href:'/pages/produits?cat=packs', label:'Packs hiver' },
+    { href:'/pages/devis', label:'Devis gratuit' },
     { href:'/pages/suivi', label:'Suivi de commande' },
     { href:'/pages/contact', label:'Contact' }
   ];
@@ -35,10 +36,25 @@ function renderHeader(activePath){
 
   const toggle = document.getElementById('nav-toggle');
   const nav = document.getElementById('main-nav');
-  toggle.addEventListener('click', () => {
-    const open = nav.classList.toggle('open');
+
+  // Hauteur réelle de l'en-tête : le menu mobile s'y accroche, quel que soit l'écran.
+  function syncHeaderHeight(){
+    document.documentElement.style.setProperty('--header-h', el.offsetHeight + 'px');
+  }
+  function setMenu(open){
+    nav.classList.toggle('open', open);
     toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    toggle.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+    document.body.classList.toggle('menu-open', open);
+  }
+  toggle.addEventListener('click', () => setMenu(!nav.classList.contains('open')));
+  nav.addEventListener('click', e => { if(e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', e => { if(e.key === 'Escape') setMenu(false); });
+  window.addEventListener('resize', () => {
+    syncHeaderHeight();
+    if(window.innerWidth > 860) setMenu(false);
   });
+  syncHeaderHeight();
 
   updateCartBadge();
   window.addEventListener('dd-cart-updated', updateCartBadge);
@@ -47,6 +63,50 @@ function renderHeader(activePath){
 function updateCartBadge(){
   const badge = document.getElementById('cart-badge');
   if(badge) badge.textContent = Cart.count();
+}
+
+const WHATSAPP_URL = 'https://wa.me/33759309200';
+
+function renderTrustBadges(){
+  const footer = document.getElementById('site-footer');
+  if(!footer || document.getElementById('trust-badges')) return;
+  const badges = [
+    { icon:'truck',   title:'Livraison 48 à 72 h', text:'Expédition rapide vers toute la France métropolitaine' },
+    { icon:'shield',  title:'Paiement sécurisé',   text:'Carte bancaire, cryptomonnaie ou virement' },
+    { icon:'package', title:'Stock disponible',    text:'Les 24 références prêtes à expédier' },
+    { icon:'headset', title:'Service client',      text:'Par WhatsApp ou e-mail, du lundi au vendredi' }
+  ];
+  const section = document.createElement('section');
+  section.id = 'trust-badges';
+  section.className = 'trust-badges';
+  section.setAttribute('aria-label', 'Nos engagements');
+  section.innerHTML = `
+    <div class="wrap">
+      <div class="trust-grid">
+        ${badges.map(b => `
+          <div class="trust-item">
+            <span class="trust-icon">${ICONS[b.icon]}</span>
+            <div>
+              <h3>${b.title}</h3>
+              <p>${b.text}</p>
+            </div>
+          </div>`).join('')}
+      </div>
+    </div>`;
+  footer.parentNode.insertBefore(section, footer);
+}
+
+function renderWhatsAppChat(){
+  if(document.getElementById('wa-chat')) return;
+  const a = document.createElement('a');
+  a.id = 'wa-chat';
+  a.className = 'wa-chat';
+  a.href = WHATSAPP_URL;
+  a.target = '_blank';
+  a.rel = 'noopener';
+  a.setAttribute('aria-label', 'Discuter avec nous sur WhatsApp');
+  a.innerHTML = `${ICONS.whatsapp}<span class="wa-label">Discuter sur WhatsApp</span>`;
+  document.body.appendChild(a);
 }
 
 function renderFooter(){
@@ -64,6 +124,7 @@ function renderFooter(){
           <ul>
             <li><a href="/pages/produits">Tous les produits</a></li>
             <li><a href="/pages/produits?cat=packs">Packs &amp; offres</a></li>
+            <li><a href="/pages/devis">Devis gratuit</a></li>
             <li><a href="/pages/panier">Mon panier</a></li>
           </ul>
         </div>
@@ -72,17 +133,17 @@ function renderFooter(){
           <ul>
             <li><a href="/pages/suivi">Suivi de commande</a></li>
             <li><a href="/pages/contact">Contact</a></li>
+            <li><a href="${WHATSAPP_URL}" target="_blank" rel="noopener">WhatsApp : +33 7 59 30 92 00</a></li>
             <li><a href="/pages/mentions-legales">Mentions légales</a></li>
           </ul>
         </div>
         <div>
           <h4>Paiement sécurisé</h4>
           <ul>
-            <li>Carte bancaire — Stripe</li>
-            <li>Cryptomonnaie — NowPayments</li>
-            <li>Virement bancaire</li>
+            <li><a href="/pages/paiement-carte-bancaire">Carte bancaire</a></li>
+            <li><a href="/pages/paiement-cryptomonnaie">Cryptomonnaie</a></li>
+            <li><a href="/pages/paiement-virement-bancaire">Virement bancaire</a></li>
           </ul>
-          <p style="margin-top:14px;">16 rue Suzanne Lanoy<br>59870 Vred, France</p>
         </div>
       </div>
       <div class="footer-legal">
@@ -90,6 +151,8 @@ function renderFooter(){
         <span>TVA FR62989318472</span>
       </div>
     </div>`;
+  const path = window.location.pathname;
+  if(!/checkout|order-success/.test(path)) renderTrustBadges();
 }
 
 function showToast(message){
@@ -112,4 +175,5 @@ document.addEventListener('DOMContentLoaded', () => {
   if(path.endsWith('.html')) path = path.replace(/\/index\.html$/, '/').replace(/\.html$/, '');
   try{ renderHeader(path || '/'); }catch(err){ console.error('Erreur en-tête :', err); }
   try{ renderFooter(); }catch(err){ console.error('Erreur pied de page :', err); }
+  try{ renderWhatsAppChat(); }catch(err){ console.error('Erreur WhatsApp :', err); }
 });

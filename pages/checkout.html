@@ -84,18 +84,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <fieldset>
             <legend>Mode de paiement</legend>
 
-            <label class="pay-option" data-pay-option="card">
-              <div class="pay-option-head"><span><input type="radio" name="payment" value="card" checked> Carte bancaire</span> <span data-icon="card"></span></div>
-              <p>Paiement sécurisé par carte, traité directement par Stripe. Vos coordonnées bancaires ne transitent jamais par nos serveurs.</p>
-              <div class="card-field-wrap">
-                <div id="card-element" class="card-element-box"></div>
-                <div id="card-errors" class="field-error" style="display:block;min-height:16px;"></div>
-              </div>
+            <label class="pay-option" data-pay-option="later">
+              <div class="pay-option-head"><span><input type="radio" name="payment" value="later" checked> Commander sans payer maintenant</span> <span data-icon="mail"></span></div>
+              <p>Votre commande est enregistrée immédiatement. Nous vous envoyons ensuite un lien de paiement sécurisé par e-mail pour régler.</p>
             </label>
 
             <label class="pay-option" data-pay-option="crypto">
               <div class="pay-option-head"><span><input type="radio" name="payment" value="crypto"> Cryptomonnaie</span> <span data-icon="coin"></span></div>
-              <p>Bitcoin, Ethereum, USDT et autres cryptomonnaies. Paiement sécurisé géré par NowPayments.</p>
+              <p>Bitcoin, Ethereum, USDT et autres cryptomonnaies. Paiement sécurisé.</p>
               <div class="crypto-select" id="crypto-select" style="display:none;">
                 <select id="crypto-currency" class="field-select">
                   <option value="btc">Bitcoin (BTC)</option>
@@ -122,9 +118,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </label>
 
-            <label class="pay-option" data-pay-option="later">
-              <div class="pay-option-head"><span><input type="radio" name="payment" value="later"> Commander sans payer maintenant</span> <span data-icon="mail"></span></div>
-              <p>Votre commande est enregistrée immédiatement. Nous vous envoyons ensuite un lien de paiement sécurisé Payoneer par e-mail pour régler.</p>
+            <label class="pay-option" data-pay-option="card">
+              <div class="pay-option-head"><span><input type="radio" name="payment" value="card"> Carte bancaire</span> <span data-icon="card"></span></div>
+              <p>Paiement sécurisé par carte bancaire. Vos coordonnées bancaires ne sont jamais conservées sur nos serveurs.</p>
+              <div class="card-field-wrap">
+                <div id="card-element" class="card-element-box"></div>
+                <div id="card-errors" class="field-error" style="display:block;min-height:16px;"></div>
+              </div>
             </label>
           </fieldset>
 
@@ -152,7 +152,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
           
           <div id="form-msg" class="form-msg"></div>
-          <button type="submit" class="btn btn-primary btn-block" id="submit-btn" style="margin-top:8px;">Payer maintenant</button>
+          <button type="submit" class="btn btn-primary btn-block" id="submit-btn" style="margin-top:8px;">Confirmer la commande</button>
           <p class="order-note">Aucune donnée n'est stockée sur un serveur : votre commande reste enregistrée sur cet appareil pour que vous puissiez la retrouver depuis la page « Suivi de commande ».</p>
         </div>
 

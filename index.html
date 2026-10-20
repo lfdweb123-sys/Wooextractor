@@ -85,39 +85,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
       <div class="hero-media">
-        <img src="https://images.pexels.com/photos/2242425/pexels-photo-2242425.jpeg?auto=compress&cs=tinysrgb&w=1260&h=1400&dpr=1&fit=crop" alt="Bûches de bois de chauffage empilées et prêtes à l'emploi">
+        <img src="/assets/img/buches-fendues-empilees.jpg" width="861" height="659" alt="Bûches de bois de chauffage fendues et empilées, prêtes à brûler">
       </div>
     </div>
   </section>
 
   <div class="grain-rule"></div>
-
-  <section class="section-tight">
-    <div class="wrap">
-      <div class="value-grid">
-        <div class="value-item">
-          <span data-icon="truck"></span>
-          <h3>Livraison rapide</h3>
-          <p>Commande préparée et expédiée sous 48 à 72 h vers toute la France métropolitaine.</p>
-        </div>
-        <div class="value-item">
-          <span data-icon="leaf"></span>
-          <h3>Bois sélectionné</h3>
-          <p>Essences feuillues séchées, taux d'humidité contrôlé pour une combustion propre et efficace.</p>
-        </div>
-        <div class="value-item">
-          <span data-icon="shield"></span>
-          <h3>Paiement sécurisé</h3>
-          <p>Réglez par carte bancaire, virement ou en cryptomonnaie. Paiement traité par Stripe et NowPayments.</p>
-        </div>
-        <div class="value-item">
-          <span data-icon="package"></span>
-          <h3>Stock disponible</h3>
-          <p>Chaque référence est disponible jusqu'à 100 unités, sans rupture surprise en pleine commande.</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <section class="section">
     <div class="wrap">
@@ -147,7 +120,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <section class="section">
     <div class="wrap">
       <div class="split">
-        <img src="https://images.pexels.com/photos/15780139/pexels-photo-15780139/free-photo-of-pile-of-tree-trunks.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Rondins de bois empilés en extérieur">
+        <img src="/assets/img/rondins-bois-empiles.jpg" width="656" height="605" loading="lazy" alt="Rondins de bois empilés, coupe nette et cernes visibles">
         <div class="split-copy">
           <h2>Un bois pensé pour bien chauffer, pas seulement pour brûler</h2>
           <p class="lede">Nous sélectionnons des essences feuillues denses et un séchage maîtrisé pour que chaque bûche donne le meilleur rendement dans votre poêle, votre insert ou votre cheminée ouverte.</p>
@@ -157,6 +130,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <li><span data-icon="package"></span> Longueurs disponibles de 25 à 50 cm pour tous les foyers</li>
             <li><span data-icon="truck"></span> Commande en un clic, suivi clair depuis votre navigateur</li>
           </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="split reverse">
+        <img src="/assets/img/livraison-remorque-bois.jpg" width="768" height="709" loading="lazy" alt="Remorque basculante déchargeant des bûches de bois de chauffage devant une maison">
+        <div class="split-copy">
+          <h2>Votre bois livré directement chez vous</h2>
+          <p class="lede">Votre commande est préparée puis livrée à votre adresse, partout en France métropolitaine. Plus besoin de charger, ni de transporter vous-même.</p>
+          <ul>
+            <li><span data-icon="truck"></span> Expédition sous 48 à 72 h après votre commande</li>
+            <li><span data-icon="package"></span> Stock disponible sur les 24 références</li>
+            <li><span data-icon="shield"></span> Paiement par carte, virement ou cryptomonnaie</li>
+          </ul>
+          <div class="hero-ctas" style="margin-top:24px;">
+            <a href="/pages/produits" class="btn btn-primary">Commander maintenant</a>
+          </div>
         </div>
       </div>
     </div>
@@ -229,8 +222,43 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </section>
 
+  <section class="section" id="devis">
+    <div class="wrap">
+      <div class="quote-layout">
+        <div class="quote-intro">
+          <h2>Demandez un devis gratuit</h2>
+          <p class="lede" style="margin-top:12px;">Une grosse quantité, une livraison particulière ou un besoin précis ? Dites-nous ce qu'il vous faut, nous vous répondons avec une offre adaptée.</p>
+          <ul>
+            <li><span data-icon="check"></span> Devis gratuit et sans engagement</li>
+            <li><span data-icon="package"></span> Stock disponible sur les 24 références</li>
+            <li><span data-icon="truck"></span> Expédition sous 48 à 72 h</li>
+            <li><span data-icon="mail"></span> Réponse rapide par e-mail ou téléphone</li>
+          </ul>
+        </div>
+        <div class="quote-card">
+          <form id="quote-form" class="quote-form" novalidate>
+            <div class="form-grid">
+              <div class="form-field" data-required><label for="q-name">Nom complet</label><input id="q-name" name="name" type="text" autocomplete="name"><span class="field-error">Merci d'indiquer votre nom.</span></div>
+              <div class="form-field" data-required><label for="q-email">E-mail</label><input id="q-email" name="email" type="email" autocomplete="email"><span class="field-error">Merci d'indiquer un e-mail valide.</span></div>
+              <div class="form-field" data-required><label for="q-phone">Téléphone</label><input id="q-phone" name="phone" type="tel" autocomplete="tel"><span class="field-error">Merci d'indiquer votre téléphone.</span></div>
+              <div class="form-field" data-required><label for="q-product">Produit souhaité</label><select id="q-product" name="product"></select><span class="field-error">Merci de choisir un produit.</span></div>
+              <div class="form-field"><label for="q-quantity">Quantité souhaitée</label><input id="q-quantity" name="quantity" type="text" placeholder="Ex : 2 palettes"></div>
+              <div class="form-field"><label for="q-postcode">Code postal de livraison</label><input id="q-postcode" name="postcode" type="text" inputmode="numeric" autocomplete="postal-code"></div>
+              <div class="form-field full"><label for="q-city">Ville</label><input id="q-city" name="city" type="text" autocomplete="address-level2"></div>
+              <div class="form-field full"><label for="q-message">Votre message (facultatif)</label><textarea id="q-message" name="message" rows="4" placeholder="Précisions sur votre besoin, type d'appareil de chauffage, délai souhaité…"></textarea></div>
+            </div>
+            <div class="hp-field" aria-hidden="true"><label>Ne pas remplir ce champ<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+            <div id="quote-msg" class="form-msg" role="alert"></div>
+            <button type="submit" class="btn btn-primary btn-block" id="quote-submit" style="margin-top:8px;">Demander mon devis gratuit</button>
+            <p class="quote-fine">Gratuit et sans engagement. Réponse rapide par e-mail ou par téléphone.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="cta-banner">
-    <img src="https://images.pexels.com/photos/923167/pexels-photo-923167.jpeg?auto=compress&cs=tinysrgb&w=1600&dpr=1" alt="Bûches empilées en forêt à l'automne">
+    <img src="/assets/img/souche-arbre-foret.jpg" width="861" height="659" loading="lazy" alt="Souche d'arbre fraîchement coupée en forêt">
     <div class="wrap">
       <h2>Constituez votre réserve avant les premiers froids</h2>
       <p>Les packs d'hiver rassemblent bûches et allume-feu en une seule commande, au meilleur prix par filet.</p>
@@ -248,5 +276,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script src="/assets/js/product-render.js"></script>
 <script src="/assets/js/layout.js"></script>
 <script src="/assets/js/main.js"></script>
+<script src="/assets/js/devis.js"></script>
 </body>
 </html>
