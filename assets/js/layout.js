@@ -54,11 +54,11 @@ function renderHeader(){
       </a>
       <nav class="main-nav" id="main-nav">${navHtml}</nav>
       <div class="header-actions">
-        <button class="nav-toggle" id="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false"><span></span></button>
         <a href="/pages/panier" class="cart-link" aria-label="Voir le panier">
           ${ICONS.cart}
           <span class="cart-badge" id="cart-badge">0</span>
         </a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false"><span></span></button>
       </div>
     </div>`;
   updateNavActive();
