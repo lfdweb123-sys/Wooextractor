@@ -539,3 +539,10 @@ h1,h2,h3{overflow-wrap:anywhere;}
   .header-bar{padding:8px 16px;}
   .brand-logo{height:52px;}
 }
+
+/* ---- Galerie photo sur les cartes produit ---- */
+.product-media.has-gallery{position:relative;}
+.gal-btn{position:absolute;top:50%;transform:translateY(-50%);width:34px;height:34px;border:0;border-radius:50%;background:rgba(255,255,255,.9);color:#222;font-size:1.4rem;line-height:1;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.25);display:flex;align-items:center;justify-content:center;padding:0 0 3px;}
+.gal-prev{left:8px;}
+.gal-next{right:8px;}
+.gal-count{position:absolute;right:8px;bottom:8px;padding:2px 8px;border-radius:999px;background:rgba(0,0,0,.6);color:#fff;font-size:.75rem;font-weight:600;}

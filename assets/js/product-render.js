@@ -12,6 +12,15 @@ function hydrateIcons(root = document){
 
 function productMediaHtml(product){
   if(product.media.type === 'photo'){
+    const gallery = product.media.gallery;
+    if(gallery && gallery.length > 1){
+      return `<div class="product-media has-gallery" data-index="0">
+        <img src="${gallery[0]}" alt="${product.media.alt}" loading="lazy">
+        <button class="gal-btn gal-prev" type="button" aria-label="Photo précédente">‹</button>
+        <button class="gal-btn gal-next" type="button" aria-label="Photo suivante">›</button>
+        <span class="gal-count">1 / ${gallery.length}</span>
+      </div>`;
+    }
     return `<div class="product-media"><img src="${product.media.src}" alt="${product.media.alt}" loading="lazy"></div>`;
   }
   return `<div class="product-media icon-media">${ICONS[product.media.icon] || ''}</div>`;
@@ -61,3 +70,19 @@ function renderCategoryStrip(containerId){
     </a>`;
   }).join('');
 }
+
+// Galerie photo des cartes produit (produits avec media.gallery)
+document.addEventListener('click', e => {
+  const btn = e.target.closest('.gal-btn');
+  if(!btn) return;
+  const media = btn.closest('.product-media');
+  const card = btn.closest('.product-card');
+  const product = card && getProductById(card.getAttribute('data-id'));
+  const gallery = product && product.media.gallery;
+  if(!gallery) return;
+  const step = btn.classList.contains('gal-next') ? 1 : -1;
+  const index = (Number(media.getAttribute('data-index')) + step + gallery.length) % gallery.length;
+  media.setAttribute('data-index', index);
+  media.querySelector('img').src = gallery[index];
+  media.querySelector('.gal-count').textContent = `${index + 1} / ${gallery.length}`;
+});
