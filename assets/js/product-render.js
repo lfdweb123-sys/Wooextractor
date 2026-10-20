@@ -33,9 +33,9 @@ function productCardHtml(product){
     <div class="product-body">
       ${product.badge ? `<span class="product-badge" style="position:static;display:inline-block;width:max-content;margin-bottom:2px;">${product.badge}</span>` : ''}
       <span class="product-cat">${getCategoryLabel(product.category)}</span>
-      <h3 class="product-name">${product.name}</h3>
+      <h3 class="product-name"><a href="/pages/produit?id=${product.id}">${product.name}</a></h3>
       <p class="product-desc">${product.desc}</p>
-      <span class="product-stock">En stock — ${product.stock} disponibles</span>
+      <span class="product-stock">En stock — ${product.stock} disponible${product.stock > 1 ? 's' : ''}</span>
       <div class="product-foot">
         <span class="product-price">${formatPrice(product.price)}<br><small>/ ${product.unit}</small></span>
         <button class="add-btn" type="button" data-add="${product.id}">Ajouter au panier</button>
@@ -85,4 +85,12 @@ document.addEventListener('click', e => {
   media.setAttribute('data-index', index);
   media.querySelector('img').src = gallery[index];
   media.querySelector('.gal-count').textContent = `${index + 1} / ${gallery.length}`;
+});
+
+// Clic sur la photo d'une carte produit -> fiche détail
+document.addEventListener('click', e => {
+  if(e.target.closest('.gal-btn')) return;
+  const media = e.target.closest('.product-card .product-media');
+  const card = media && media.closest('.product-card');
+  if(card) window.location.href = '/pages/produit?id=' + card.getAttribute('data-id');
 });

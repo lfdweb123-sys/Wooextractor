@@ -20,6 +20,12 @@ function currentNavKey(){
     if(cat === 'autres' || (typeof isOtherCategory === 'function' && isOtherCategory(cat))) return 'autres';
     return 'bois';
   }
+  if(path === '/pages/produit'){
+    const p = typeof getProductById === 'function' ? getProductById(new URLSearchParams(window.location.search).get('id')) : null;
+    if(!p) return 'bois';
+    if(p.category === 'packs') return 'packs';
+    return (typeof isOtherCategory === 'function' && isOtherCategory(p.category)) ? 'autres' : 'bois';
+  }
   return path;
 }
 
