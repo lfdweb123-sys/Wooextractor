@@ -118,3 +118,19 @@ Tout se passe dans `assets/js/products.js` : chaque produit est un objet
 `{ id, category, name, unit, price, stock, desc, media }`. Pour changer un
 prix, un stock ou un texte, éditez directement cette valeur — il n'y a pas
 d'interface d'administration par choix.
+
+## Flux produits (Meta / Google Merchant)
+
+`feed.xml` (https://wooextractor.com/feed.xml) liste tous les produits de
+`assets/js/products.js` au format RSS 2.0 avec le namespace `g:`. Après toute
+modification des produits ou des prix, régénérez-le puis poussez-le :
+
+```bash
+node scripts/generate-feed.mjs
+```
+
+## Suivi (Google Analytics / Tag Manager)
+
+Le tag gtag.js (`G-W43KE8BBTB`) et Google Tag Manager (`GTM-WWLR2PTP`) sont
+installés dans le `<head>` de toutes les pages HTML, avec le `noscript` GTM
+juste après `<body>`.
