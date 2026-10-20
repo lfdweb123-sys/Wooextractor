@@ -2,27 +2,55 @@
    Layout commun : en-tête, pied de page, navigation mobile, badge panier, toast.
    ========================================================================== */
 
-function renderHeader(activePath){
+function normalizedPath(){
+  let path = window.location.pathname;
+  if(path.length > 1 && path.endsWith('/')) path = path.slice(0, -1);
+  if(path.endsWith('.html')) path = path.replace(/\/index\.html$/, '/').replace(/\.html$/, '');
+  return path || '/';
+}
+
+// Une seule entrée du menu est active à la fois.
+// Sur /pages/produits, l'entrée dépend de la catégorie (?cat=) :
+//   packs  -> Packs hiver ; autres ou catégorie « autre » -> Autres catégories ; sinon -> Bois de chauffage.
+function currentNavKey(){
+  const path = normalizedPath();
+  if(path === '/pages/produits'){
+    const cat = new URLSearchParams(window.location.search).get('cat');
+    if(cat === 'packs') return 'packs';
+    if(cat === 'autres' || (typeof isOtherCategory === 'function' && isOtherCategory(cat))) return 'autres';
+    return 'bois';
+  }
+  return path;
+}
+
+function updateNavActive(){
+  const key = currentNavKey();
+  document.querySelectorAll('#main-nav a[data-nav]').forEach(a => {
+    const on = a.getAttribute('data-nav') === key;
+    a.classList.toggle('active', on);
+    if(on) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
+  });
+}
+
+function renderHeader(){
   const el = document.getElementById('site-header');
   if(!el) return;
+  const hasOther = typeof PRODUCTS !== 'undefined' && typeof isOtherProduct === 'function' && PRODUCTS.some(isOtherProduct);
   const links = [
-    { href:'/', label:'Accueil' },
-    { href:'/pages/produits', label:'Tous les produits' },
-    { href:'/pages/produits?cat=packs', label:'Packs hiver' },
-    { href:'/pages/devis', label:'Devis gratuit' },
-    { href:'/pages/suivi', label:'Suivi de commande' },
-    { href:'/pages/contact', label:'Contact' }
+    { key:'/', href:'/', label:'Accueil' },
+    { key:'bois', href:'/pages/produits', label:'Bois de chauffage' },
+    { key:'packs', href:'/pages/produits?cat=packs', label:'Packs hiver' },
+    ...(hasOther ? [{ key:'autres', href:'/pages/produits?cat=autres', label:'Autres catégories' }] : []),
+    { key:'/pages/devis', href:'/pages/devis', label:'Devis gratuit' },
+    { key:'/pages/suivi', href:'/pages/suivi', label:'Suivi de commande' },
+    { key:'/pages/contact', href:'/pages/contact', label:'Contact' }
   ];
-  const navHtml = links.map(l => {
-    const isActive = activePath === l.href.split('?')[0];
-    return `<a href="${l.href}"${isActive ? ' class="active" aria-current="page"' : ''}>${l.label}</a>`;
-  }).join('');
+  const navHtml = links.map(l => `<a href="${l.href}" data-nav="${l.key}">${l.label}</a>`).join('');
 
   el.innerHTML = `
     <div class="header-bar">
-      <a href="/" class="brand">
-        <span class="brand-name">WooExtractor</span>
-        <span class="brand-tag">Bois de chauffage &amp; accessoires</span>
+      <a href="/" class="brand" aria-label="WooExtractor — accueil">
+        <img src="/assets/img/logo.png" alt="WooExtractor — Bois de chauffage, tracteurs, produits agricoles" class="brand-logo" width="64" height="59">
       </a>
       <nav class="main-nav" id="main-nav">${navHtml}</nav>
       <div class="header-actions">
@@ -33,6 +61,9 @@ function renderHeader(activePath){
         <button class="nav-toggle" id="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false"><span></span></button>
       </div>
     </div>`;
+  updateNavActive();
+  window.addEventListener('dd-route-changed', updateNavActive);
+  window.addEventListener('popstate', updateNavActive);
 
   const toggle = document.getElementById('nav-toggle');
   const nav = document.getElementById('main-nav');
@@ -112,18 +143,20 @@ function renderWhatsAppChat(){
 function renderFooter(){
   const el = document.getElementById('site-footer');
   if(!el) return;
+  const hasOther = typeof PRODUCTS !== 'undefined' && typeof isOtherProduct === 'function' && PRODUCTS.some(isOtherProduct);
   el.innerHTML = `
     <div class="wrap">
       <div class="footer-grid">
         <div>
-          <h4>WooExtractor</h4>
+          <a href="/" class="footer-brand" aria-label="WooExtractor — accueil"><img src="/assets/img/logo.png" alt="WooExtractor" class="footer-logo" width="110" height="102" loading="lazy"></a>
           <p>Bois de chauffage, packs d'hiver et allumage sélectionnés pour tenir toute la saison froide.</p>
         </div>
         <div>
           <h4>Boutique</h4>
           <ul>
-            <li><a href="/pages/produits">Tous les produits</a></li>
+            <li><a href="/pages/produits">Bois de chauffage</a></li>
             <li><a href="/pages/produits?cat=packs">Packs &amp; offres</a></li>
+            ${hasOther ? '<li><a href="/pages/produits?cat=autres">Autres catégories</a></li>' : ''}
             <li><a href="/pages/devis">Devis gratuit</a></li>
             <li><a href="/pages/panier">Mon panier</a></li>
           </ul>
@@ -170,10 +203,7 @@ function showToast(message){
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  let path = window.location.pathname;
-  if(path.length > 1 && path.endsWith('/')) path = path.slice(0, -1);
-  if(path.endsWith('.html')) path = path.replace(/\/index\.html$/, '/').replace(/\.html$/, '');
-  try{ renderHeader(path || '/'); }catch(err){ console.error('Erreur en-tête :', err); }
+  try{ renderHeader(); }catch(err){ console.error('Erreur en-tête :', err); }
   try{ renderFooter(); }catch(err){ console.error('Erreur pied de page :', err); }
   try{ renderWhatsAppChat(); }catch(err){ console.error('Erreur WhatsApp :', err); }
 });

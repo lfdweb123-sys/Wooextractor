@@ -10,6 +10,32 @@ const CATEGORIES = [
   { key: 'allumage', label: 'Allumage & combustion', short: 'Démarrage du feu', img: 'https://images.pexels.com/photos/19899577/pexels-photo-19899577/free-photo-of-fire-burning-in-basket-at-night.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=700' }
 ];
 
+/* Autres catégories : jamais affichées sur l'accueil ni dans « Bois de chauffage ».
+   Elles n'apparaissent que sur la page « Autres catégories » (/pages/produits?cat=autres)
+   et dans leur propre catégorie. Cinq produits par catégorie. */
+const OTHER_CATEGORIES = [
+  { key: 'cartes-collection', label: 'Cartes à collectionner', short: 'Cartes sport & fans' },
+  { key: 'cartes-graphiques', label: 'Cartes graphiques', short: 'GPU gaming & création' },
+  { key: 'gaming', label: 'Gaming', short: 'Univers gaming' },
+  { key: 'lunettes-soleil', label: 'Lunettes de soleil', short: 'Solaires' },
+  { key: 'aliment-chien', label: 'Aliments pour chien', short: 'Alimentation naturelle' },
+  { key: 'tracteurs-agricoles', label: 'Tracteurs agricoles', short: 'Matériel neuf' },
+  { key: 'tracteurs-occasion', label: 'Tracteurs d\'occasion', short: 'Matériel d\'occasion' },
+  { key: 'moissonneuses-batteuses', label: 'Moissonneuses-batteuses', short: 'Récolte' },
+  { key: 'semoirs', label: 'Semoirs', short: 'Semis direct' },
+  { key: 'remorques', label: 'Remorques', short: 'Remorques bennes' },
+  { key: 'tondeuses', label: 'Tondeuses', short: 'Entretien des espaces verts' },
+  { key: 'pneus-agricoles', label: 'Pneus agricoles', short: 'Pneumatiques' },
+  { key: 'irrigation', label: 'Irrigation', short: 'Irrigation & arrosage' }
+];
+
+function isOtherCategory(key){
+  return OTHER_CATEGORIES.some(c => c.key === key);
+}
+function isOtherProduct(p){
+  return isOtherCategory(p.category);
+}
+
 function px(id, file){
   // Les fichiers Pexels au format long (ex. free-photo-of-...) vivent dans un
   // sous-dossier /pexels-photo-{id}/ ; les fichiers courts (pexels-photo-{id}.jpeg)
@@ -99,7 +125,7 @@ const PRODUCTS = [
 ];
 
 function getCategoryLabel(key){
-  const c = CATEGORIES.find(c => c.key === key);
+  const c = CATEGORIES.find(c => c.key === key) || OTHER_CATEGORIES.find(c => c.key === key);
   return c ? c.label : key;
 }
 function getProductById(id){
