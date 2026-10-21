@@ -41,12 +41,10 @@ function updateNavActive(){
 function renderHeader(){
   const el = document.getElementById('site-header');
   if(!el) return;
-  const hasOther = typeof PRODUCTS !== 'undefined' && typeof isOtherProduct === 'function' && PRODUCTS.some(isOtherProduct);
   const links = [
     { key:'/', href:'/', label:'Accueil' },
     { key:'bois', href:'/pages/produits', label:'Bois de chauffage' },
     { key:'packs', href:'/pages/produits?cat=packs', label:'Packs hiver' },
-    ...(hasOther ? [{ key:'autres', href:'/pages/produits?cat=autres', label:'Autres catégories' }] : []),
     { key:'/pages/devis', href:'/pages/devis', label:'Devis gratuit' },
     { key:'/pages/suivi', href:'/pages/suivi', label:'Suivi de commande' },
     { key:'/pages/contact', href:'/pages/contact', label:'Contact' }
@@ -149,7 +147,6 @@ function renderWhatsAppChat(){
 function renderFooter(){
   const el = document.getElementById('site-footer');
   if(!el) return;
-  const hasOther = typeof PRODUCTS !== 'undefined' && typeof isOtherProduct === 'function' && PRODUCTS.some(isOtherProduct);
   el.innerHTML = `
     <div class="wrap">
       <div class="footer-grid">
@@ -162,7 +159,6 @@ function renderFooter(){
           <ul>
             <li><a href="/pages/produits">Bois de chauffage</a></li>
             <li><a href="/pages/produits?cat=packs">Packs &amp; offres</a></li>
-            ${hasOther ? '<li><a href="/pages/produits?cat=autres">Autres catégories</a></li>' : ''}
             <li><a href="/pages/devis">Devis gratuit</a></li>
             <li><a href="/pages/panier">Mon panier</a></li>
           </ul>

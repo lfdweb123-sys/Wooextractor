@@ -154,6 +154,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if(metaDesc) metaDesc.setAttribute('content', p.desc.slice(0, 155));
   const canonical = document.querySelector('link[rel="canonical"]');
   if(canonical) canonical.setAttribute('href', `https://wooextractor.com/pages/produit?id=${p.id}`);
+  // Pas de données structurées « Product » pour les autres catégories (exclues de Google Merchant Center et Meta)
+  if(!other){
   const ld = document.createElement('script');
   ld.type = 'application/ld+json';
   ld.textContent = JSON.stringify({
@@ -168,6 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
       url:`https://wooextractor.com/pages/produit?id=${p.id}` }
   });
   document.head.appendChild(ld);
+  }
 
   // --- Galerie
   let galleryHtml;
