@@ -3,7 +3,7 @@
   <channel>
     <title>WooExtractor</title>
     <link>https://wooextractor.com</link>
-    <description>Bois de chauffage, packs d&apos;hiver et produits d&apos;allumage</description>
+    <description>Bois de chauffage, packs d&apos;hiver, produits d&apos;allumage et autres produits</description>
     <item>
       <g:id>1</g:id>
       <g:title>Bûches de bois de chauffage – 25 cm</g:title>
@@ -338,6 +338,209 @@
       <g:brand>WooExtractor</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Fireplace &amp; Wood Stove Accessories</g:google_product_category>
       <g:product_type>Allumage &amp; combustion</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>101</g:id>
+      <g:title>ASUS DUAL GeForce RTX 5060 Ti 16 Go GDDR7 OC</g:title>
+      <g:description>Carte graphique ASUS DUAL RTX 5060 Ti OC, 16 Go GDDR7, PCIe 5.0, DLSS 4. Performances solides en 1080p et jusqu&apos;en 1440p, refroidissement 2 ventilateurs Axial-tech, format compact (229 mm).</g:description>
+      <link>https://wooextractor.com/pages/produit?id=101</link>
+      <g:image_link>https://wooextractor.com/assets/img/products/gpu-asus-dual-rtx5060ti.jpg</g:image_link>
+      <g:availability>in stock</g:availability>
+      <g:condition>new</g:condition>
+      <g:price>979.95 EUR</g:price>
+      <g:brand>ASUS</g:brand>
+      <g:google_product_category>Electronics &gt; Electronics Accessories &gt; Computer Components &gt; Video Cards &amp; Adapters</g:google_product_category>
+      <g:product_type>Cartes graphiques</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>102</g:id>
+      <g:title>MSI GeForce RTX 5070 Ti 16G GAMING TRIO OC</g:title>
+      <g:description>Carte graphique MSI RTX 5070 Ti, 16 Go GDDR7 sur bus 256 bits, 8960 processeurs de flux, DLSS 4. Refroidissement TRI FROZR 4, éclairage RGB, 3 DisplayPort + HDMI 2.1b. Pensée pour le 1440p et jusqu&apos;au 4K.</g:description>
+      <link>https://wooextractor.com/pages/produit?id=102</link>
+      <g:image_link>https://wooextractor.com/assets/img/products/gpu-msi-rtx5070ti-gaming-trio.jpg</g:image_link>
+      <g:availability>in stock</g:availability>
+      <g:condition>new</g:condition>
+      <g:price>1529.95 EUR</g:price>
+      <g:brand>MSI</g:brand>
+      <g:google_product_category>Electronics &gt; Electronics Accessories &gt; Computer Components &gt; Video Cards &amp; Adapters</g:google_product_category>
+      <g:product_type>Cartes graphiques</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>103</g:id>
+      <g:title>MSI GeForce RTX 5060 Ti 16G VENTUS 2X OC PLUS</g:title>
+      <g:description>Carte graphique MSI RTX 5060 Ti, 16 Go GDDR7, 4608 processeurs de flux, DLSS 4. Double ventilateur Torx 5.0 avec technologie ZERO FROZR, 180 W, 227 mm. Idéale du 1080p au 1440p.</g:description>
+      <link>https://wooextractor.com/pages/produit?id=103</link>
+      <g:image_link>https://wooextractor.com/assets/img/products/gpu-msi-rtx5060ti-ventus-2x.jpg</g:image_link>
+      <g:availability>in stock</g:availability>
+      <g:condition>new</g:condition>
+      <g:price>939.95 EUR</g:price>
+      <g:brand>MSI</g:brand>
+      <g:google_product_category>Electronics &gt; Electronics Accessories &gt; Computer Components &gt; Video Cards &amp; Adapters</g:google_product_category>
+      <g:product_type>Cartes graphiques</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>104</g:id>
+      <g:title>ASUS ROG Astral GeForce RTX 5080 16 Go GDDR7 OC</g:title>
+      <g:description>Carte graphique ASUS ROG Astral RTX 5080 OC, 16 Go GDDR7, 10752 processeurs de flux, boost 2790 MHz. Refroidissement 4 ventilateurs avec chambre à vapeur, éclairage RGB, format 3,8 slots. Conçue pour le 4K.</g:description>
+      <link>https://wooextractor.com/pages/produit?id=104</link>
+      <g:image_link>https://wooextractor.com/assets/img/products/gpu-asus-rog-astral-rtx5080.jpg</g:image_link>
+      <g:availability>in stock</g:availability>
+      <g:condition>new</g:condition>
+      <g:price>2249.95 EUR</g:price>
+      <g:brand>ASUS</g:brand>
+      <g:google_product_category>Electronics &gt; Electronics Accessories &gt; Computer Components &gt; Video Cards &amp; Adapters</g:google_product_category>
+      <g:product_type>Cartes graphiques</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>105</g:id>
+      <g:title>Xbox Series X 1 To – Noir (neuf)</g:title>
+      <g:description>Console Microsoft Xbox Series X, 1 To de stockage, coloris noir. Vendue neuve, console seule.</g:description>
+      <link>https://wooextractor.com/pages/produit?id=105</link>
+      <g:image_link>https://wooextractor.com/assets/img/products/xbox-series-x.jpg</g:image_link>
+      <g:availability>in stock</g:availability>
+      <g:condition>new</g:condition>
+      <g:price>987.85 EUR</g:price>
+      <g:brand>Microsoft</g:brand>
+      <g:google_product_category>Electronics &gt; Video Game Consoles</g:google_product_category>
+      <g:product_type>Gaming</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>106</g:id>
+      <g:title>Motopompe sur prise de force LIDERFARM 80 m³/h – micro-tracteur 10 à 50 CV</g:title>
+      <g:description>Motopompe agricole sur prise de force, débit maxi 80 m³/h, aspiration jusqu&apos;à 10 m, refoulement jusqu&apos;à 30 m, raccords Ø 100 mm. Remplit ou vide mares, étangs et fossés. Crépine, colliers et cardan fournis. 75 kg.</g:description>
+      <link>https://wooextractor.com/pages/produit?id=106</link>
+      <g:image_link>https://wooextractor.com/assets/img/products/motopompe-liderfarm-80.jpg</g:image_link>
+      <g:availability>in stock</g:availability>
+      <g:condition>new</g:condition>
+      <g:price>825.37 EUR</g:price>
+      <g:brand>LIDERFARM</g:brand>
+      <g:product_type>Irrigation</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>107</g:id>
+      <g:title>Remorque benne basculante Lider 35560 double essieu – caisse 365 x 159 cm, PTAC 750 kg</g:title>
+      <g:description>Remorque benne à caisse basculante de 365 x 159 cm, double essieu, PTAC 750 kg. Déchargement rapide du bois, des gravats et des matériaux, sans pelle.</g:description>
+      <link>https://wooextractor.com/pages/produit?id=107</link>
+      <g:image_link>https://wooextractor.com/assets/img/products/remorque-benne-lider-35560.jpg</g:image_link>
+      <g:availability>in stock</g:availability>
+      <g:condition>new</g:condition>
+      <g:price>1061.77 EUR</g:price>
+      <g:brand>Lider</g:brand>
+      <g:product_type>Remorques</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>108</g:id>
+      <g:title>Arracheuse de pommes de terre ROPA Keiler II – 2020, occasion</g:title>
+      <g:description>Machine d&apos;occasion, année 2020, n° de série 2L0336 : 595 ha / 1 018 h. 2 rangs, trémie avec remplisseur de caisses, 2 tapis tamiseurs, 4 tapis à hérissons, double peigne à doigts, table de tri, palettes à fanes réglables électriquement, reprise d&apos;oignons supplémentaire.</g:description>
+      <link>https://wooextractor.com/pages/produit?id=108</link>
+      <g:image_link>https://wooextractor.com/assets/img/products/keiler/keiler-01.jpg</g:image_link>
+      <g:additional_image_link>https://wooextractor.com/assets/img/products/keiler/keiler-02.jpg</g:additional_image_link>
+      <g:additional_image_link>https://wooextractor.com/assets/img/products/keiler/keiler-03.jpg</g:additional_image_link>
+      <g:additional_image_link>https://wooextractor.com/assets/img/products/keiler/keiler-04.jpg</g:additional_image_link>
+      <g:additional_image_link>https://wooextractor.com/assets/img/products/keiler/keiler-05.jpg</g:additional_image_link>
+      <g:additional_image_link>https://wooextractor.com/assets/img/products/keiler/keiler-06.jpg</g:additional_image_link>
+      <g:additional_image_link>https://wooextractor.com/assets/img/products/keiler/keiler-07.jpg</g:additional_image_link>
+      <g:additional_image_link>https://wooextractor.com/assets/img/products/keiler/keiler-08.jpg</g:additional_image_link>
+      <g:additional_image_link>https://wooextractor.com/assets/img/products/keiler/keiler-09.jpg</g:additional_image_link>
+      <g:additional_image_link>https://wooextractor.com/assets/img/products/keiler/keiler-10.jpg</g:additional_image_link>
+      <g:additional_image_link>https://wooextractor.com/assets/img/products/keiler/keiler-11.jpg</g:additional_image_link>
+      <g:availability>in stock</g:availability>
+      <g:condition>used</g:condition>
+      <g:price>137500.00 EUR</g:price>
+      <g:brand>ROPA</g:brand>
+      <g:product_type>Tracteurs agricoles</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>109</g:id>
+      <g:title>Lunettes de soleil La Miss Saint Trop</g:title>
+      <g:description>Monture solaire carrée en acétate. Verres polarisés catégorie 3 (UV3), organiques, avec traitement anti-reflet face arrière. Largeur des verres 58 mm, pont 18 mm, branches 145 mm.</g:description>
+      <link>https://wooextractor.com/pages/produit?id=109</link>
+      <g:image_link>https://wooextractor.com/assets/img/products/lunettes-miss-saint-trop.jpg</g:image_link>
+      <g:availability>in stock</g:availability>
+      <g:condition>new</g:condition>
+      <g:price>150.00 EUR</g:price>
+      <g:brand>WooExtractor</g:brand>
+      <g:google_product_category>Apparel &amp; Accessories &gt; Clothing Accessories &gt; Sunglasses</g:google_product_category>
+      <g:product_type>Lunettes de soleil</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>110</g:id>
+      <g:title>Lunettes de soleil La Summer Vibe</g:title>
+      <g:description>Monture solaire hexagonale en combiné acétate – métal. Verres polarisés catégorie 3 (UV3), organiques, avec traitement anti-reflet face arrière. Largeur des verres 51 mm, pont 20 mm, branches 145 mm.</g:description>
+      <link>https://wooextractor.com/pages/produit?id=110</link>
+      <g:image_link>https://wooextractor.com/assets/img/products/lunettes-summer-vibe.jpg</g:image_link>
+      <g:availability>in stock</g:availability>
+      <g:condition>new</g:condition>
+      <g:price>150.00 EUR</g:price>
+      <g:brand>WooExtractor</g:brand>
+      <g:google_product_category>Apparel &amp; Accessories &gt; Clothing Accessories &gt; Sunglasses</g:google_product_category>
+      <g:product_type>Lunettes de soleil</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>111</g:id>
+      <g:title>Lunettes de soleil La Miss Rhode</g:title>
+      <g:description>Monture solaire rectangulaire en acétate (détails métal). Verres polarisés catégorie 3 (UV3), organiques, avec traitement anti-reflet face arrière. Largeur des verres 49 mm, pont 22 mm, branches 145 mm.</g:description>
+      <link>https://wooextractor.com/pages/produit?id=111</link>
+      <g:image_link>https://wooextractor.com/assets/img/products/lunettes-miss-rhode.jpg</g:image_link>
+      <g:availability>in stock</g:availability>
+      <g:condition>new</g:condition>
+      <g:price>150.00 EUR</g:price>
+      <g:brand>WooExtractor</g:brand>
+      <g:google_product_category>Apparel &amp; Accessories &gt; Clothing Accessories &gt; Sunglasses</g:google_product_category>
+      <g:product_type>Lunettes de soleil</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>112</g:id>
+      <g:title>Lunettes de soleil La Summer Signature</g:title>
+      <g:description>Monture solaire hexagonale en combiné acétate – métal. Verres polarisés catégorie 3 (UV3), organiques, avec traitement anti-reflet face arrière. Largeur des verres 54 mm, pont 18 mm, branches 140 mm.</g:description>
+      <link>https://wooextractor.com/pages/produit?id=112</link>
+      <g:image_link>https://wooextractor.com/assets/img/products/lunettes-summer-signature.jpg</g:image_link>
+      <g:availability>in stock</g:availability>
+      <g:condition>new</g:condition>
+      <g:price>150.00 EUR</g:price>
+      <g:brand>WooExtractor</g:brand>
+      <g:google_product_category>Apparel &amp; Accessories &gt; Clothing Accessories &gt; Sunglasses</g:google_product_category>
+      <g:product_type>Lunettes de soleil</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>113</g:id>
+      <g:title>Lunettes de soleil La Summer Touch</g:title>
+      <g:description>Monture solaire hexagonale en combiné acétate – métal. Verres polarisés catégorie 3 (UV3), organiques, avec traitement anti-reflet face arrière. Largeur des verres 51 mm, pont 18 mm, branches 145 mm.</g:description>
+      <link>https://wooextractor.com/pages/produit?id=113</link>
+      <g:image_link>https://wooextractor.com/assets/img/products/lunettes-summer-touch.jpg</g:image_link>
+      <g:availability>in stock</g:availability>
+      <g:condition>new</g:condition>
+      <g:price>150.00 EUR</g:price>
+      <g:brand>WooExtractor</g:brand>
+      <g:google_product_category>Apparel &amp; Accessories &gt; Clothing Accessories &gt; Sunglasses</g:google_product_category>
+      <g:product_type>Lunettes de soleil</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>114</g:id>
+      <g:title>Lunettes de soleil La Miss Seventies</g:title>
+      <g:description>Monture solaire rectangulaire en acétate. Verres polarisés catégorie 3 (UV3), organiques, avec traitement anti-reflet face arrière. Largeur des verres 53 mm, pont 20 mm, branches 145 mm.</g:description>
+      <link>https://wooextractor.com/pages/produit?id=114</link>
+      <g:image_link>https://wooextractor.com/assets/img/products/lunettes-miss-seventies.jpg</g:image_link>
+      <g:availability>in stock</g:availability>
+      <g:condition>new</g:condition>
+      <g:price>150.00 EUR</g:price>
+      <g:brand>WooExtractor</g:brand>
+      <g:google_product_category>Apparel &amp; Accessories &gt; Clothing Accessories &gt; Sunglasses</g:google_product_category>
+      <g:product_type>Lunettes de soleil</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
   </channel>
