@@ -145,6 +145,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const groupHref = other ? '/pages/produits?cat=autres' : '/pages/produits';
   const groupLabel = other ? 'Autres catégories' : 'Bois de chauffage';
   const stockText = `En stock — ${p.stock} disponible${p.stock > 1 ? 's' : ''}`;
+  const isUsed = p.badge === 'Occasion';
+  const absUrl = u => /^https?:\/\//i.test(u) ? u : 'https://wooextractor.com' + u;
 
   // --- SEO
   document.title = `${p.name} — WooExtractor`;
@@ -156,10 +158,14 @@ document.addEventListener('DOMContentLoaded', () => {
   ld.type = 'application/ld+json';
   ld.textContent = JSON.stringify({
     '@context':'https://schema.org', '@type':'Product', name:p.name, description:p.desc,
+    sku:String(p.id),
+    brand:{ '@type':'Brand', name:p.brand || 'WooExtractor' },
     category:catLabel,
-    ...(photos.length ? { image: photos.map(u => 'https://wooextractor.com' + u) } : {}),
+    ...(photos.length ? { image: photos.map(absUrl) } : {}),
     offers:{ '@type':'Offer', priceCurrency:'EUR', price:p.price.toFixed(2),
-      availability:'https://schema.org/InStock', url:`https://wooextractor.com/pages/produit?id=${p.id}` }
+      availability:'https://schema.org/InStock',
+      itemCondition: isUsed ? 'https://schema.org/UsedCondition' : 'https://schema.org/NewCondition',
+      url:`https://wooextractor.com/pages/produit?id=${p.id}` }
   });
   document.head.appendChild(ld);
 
