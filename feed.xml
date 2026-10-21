@@ -3,17 +3,18 @@
   <channel>
     <title>WooExtractor</title>
     <link>https://wooextractor.com</link>
-    <description>Bois de chauffage, packs d'hiver et produits d'allumage</description>
+    <description>Bois de chauffage, packs d&apos;hiver et produits d&apos;allumage</description>
     <item>
       <g:id>1</g:id>
       <g:title>Bûches de bois de chauffage – 25 cm</g:title>
       <g:description>Bûches courtes de 25 cm, calibrées pour poêles et inserts compacts. Séchage naturel, taux d&apos;humidité maîtrisé. Conditionnement : filet de 40 L.</g:description>
-      <g:link>https://wooextractor.com/pages/produits?cat=bois-chauffage</g:link>
+      <link>https://wooextractor.com/pages/produit?id=1</link>
       <g:image_link>https://images.pexels.com/photos/8827814/pexels-photo-8827814.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=700</g:image_link>
       <g:availability>in stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>39.90 EUR</g:price>
       <g:brand>WooExtractor</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Fireplace &amp; Wood Stove Accessories</g:google_product_category>
       <g:product_type>Bois de chauffage</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
@@ -21,12 +22,13 @@
       <g:id>2</g:id>
       <g:title>Bûches de bois de chauffage – 33 cm</g:title>
       <g:description>Le format le plus polyvalent, adapté à la majorité des foyers fermés et poêles à bois du marché français. Conditionnement : filet de 40 L.</g:description>
-      <g:link>https://wooextractor.com/pages/produits?cat=bois-chauffage</g:link>
+      <link>https://wooextractor.com/pages/produit?id=2</link>
       <g:image_link>https://images.pexels.com/photos/15962304/pexels-photo-15962304/free-photo-of-close-up-of-a-pile-of-chopped-wood.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=700</g:image_link>
       <g:availability>in stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>42.90 EUR</g:price>
       <g:brand>WooExtractor</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Fireplace &amp; Wood Stove Accessories</g:google_product_category>
       <g:product_type>Bois de chauffage</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
@@ -34,12 +36,13 @@
       <g:id>3</g:id>
       <g:title>Bûches de bois de chauffage – 40 cm</g:title>
       <g:description>Format long pour foyers ouverts et grandes chaudières bois. Combustion longue, moins de rechargements. Conditionnement : filet de 40 L.</g:description>
-      <g:link>https://wooextractor.com/pages/produits?cat=bois-chauffage</g:link>
+      <link>https://wooextractor.com/pages/produit?id=3</link>
       <g:image_link>https://images.pexels.com/photos/8248514/pexels-photo-8248514.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=700</g:image_link>
       <g:availability>in stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>44.90 EUR</g:price>
       <g:brand>WooExtractor</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Fireplace &amp; Wood Stove Accessories</g:google_product_category>
       <g:product_type>Bois de chauffage</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
@@ -47,12 +50,13 @@
       <g:id>4</g:id>
       <g:title>Bûches de bois de chauffage – 50 cm</g:title>
       <g:description>Longueur adaptée aux grandes cheminées et foyers extérieurs. Belle tenue au feu sur soirée entière. Conditionnement : filet de 40 L.</g:description>
-      <g:link>https://wooextractor.com/pages/produits?cat=bois-chauffage</g:link>
+      <link>https://wooextractor.com/pages/produit?id=4</link>
       <g:image_link>https://images.pexels.com/photos/13540381/pexels-photo-13540381.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=700</g:image_link>
       <g:availability>in stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>46.90 EUR</g:price>
       <g:brand>WooExtractor</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Fireplace &amp; Wood Stove Accessories</g:google_product_category>
       <g:product_type>Bois de chauffage</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
@@ -60,12 +64,13 @@
       <g:id>5</g:id>
       <g:title>Bois de chauffage Premium – Chêne</g:title>
       <g:description>Chêne fendu, pouvoir calorifique élevé et combustion lente. La référence pour une chaleur longue durée. Conditionnement : filet de 40 L.</g:description>
-      <g:link>https://wooextractor.com/pages/produits?cat=bois-chauffage</g:link>
+      <link>https://wooextractor.com/pages/produit?id=5</link>
       <g:image_link>https://images.pexels.com/photos/9316925/pexels-photo-9316925.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=700</g:image_link>
       <g:availability>in stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>54.90 EUR</g:price>
       <g:brand>WooExtractor</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Fireplace &amp; Wood Stove Accessories</g:google_product_category>
       <g:product_type>Bois de chauffage</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
@@ -73,12 +78,13 @@
       <g:id>6</g:id>
       <g:title>Bois de chauffage Premium – Hêtre</g:title>
       <g:description>Hêtre sec, flamme régulière et braises durables. Un classique apprécié pour son excellent rendement. Conditionnement : filet de 40 L.</g:description>
-      <g:link>https://wooextractor.com/pages/produits?cat=bois-chauffage</g:link>
+      <link>https://wooextractor.com/pages/produit?id=6</link>
       <g:image_link>https://images.pexels.com/photos/9711778/pexels-photo-9711778.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=700</g:image_link>
       <g:availability>in stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>52.90 EUR</g:price>
       <g:brand>WooExtractor</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Fireplace &amp; Wood Stove Accessories</g:google_product_category>
       <g:product_type>Bois de chauffage</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
@@ -86,12 +92,13 @@
       <g:id>7</g:id>
       <g:title>Bois de chauffage Premium – Charme</g:title>
       <g:description>Charme fendu, bois dense à combustion lente. Excellent choix pour tenir le feu toute la nuit. Conditionnement : filet de 40 L.</g:description>
-      <g:link>https://wooextractor.com/pages/produits?cat=bois-chauffage</g:link>
+      <link>https://wooextractor.com/pages/produit?id=7</link>
       <g:image_link>https://images.pexels.com/photos/629138/pexels-photo-629138.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=700</g:image_link>
       <g:availability>in stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>53.90 EUR</g:price>
       <g:brand>WooExtractor</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Fireplace &amp; Wood Stove Accessories</g:google_product_category>
       <g:product_type>Bois de chauffage</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
@@ -99,12 +106,13 @@
       <g:id>8</g:id>
       <g:title>Bois de chauffage Premium – Mélange de feuillus</g:title>
       <g:description>Assortiment de feuillus durs sélectionnés (chêne, hêtre, charme) pour un bon équilibre prix / chaleur. Conditionnement : filet de 40 L.</g:description>
-      <g:link>https://wooextractor.com/pages/produits?cat=bois-chauffage</g:link>
+      <link>https://wooextractor.com/pages/produit?id=8</link>
       <g:image_link>https://images.pexels.com/photos/6066139/pexels-photo-6066139.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=700</g:image_link>
       <g:availability>in stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>49.90 EUR</g:price>
       <g:brand>WooExtractor</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Fireplace &amp; Wood Stove Accessories</g:google_product_category>
       <g:product_type>Bois de chauffage</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
@@ -112,12 +120,13 @@
       <g:id>9</g:id>
       <g:title>Bois de chauffage séché – taux d&apos;humidité réduit</g:title>
       <g:description>Séchage poussé sous abri, humidité contrôlée sous 20 %. Allumage plus rapide, rendement optimal, moins de fumée. Conditionnement : filet de 40 L.</g:description>
-      <g:link>https://wooextractor.com/pages/produits?cat=bois-chauffage</g:link>
+      <link>https://wooextractor.com/pages/produit?id=9</link>
       <g:image_link>https://images.pexels.com/photos/12826984/pexels-photo-12826984.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=700</g:image_link>
       <g:availability>in stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>57.90 EUR</g:price>
       <g:brand>WooExtractor</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Fireplace &amp; Wood Stove Accessories</g:google_product_category>
       <g:product_type>Bois de chauffage</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
@@ -125,12 +134,13 @@
       <g:id>10</g:id>
       <g:title>Bûches densifiées / bûches compressées</g:title>
       <g:description>Bûches de sciure compressée sans additif. Combustion propre, très peu de cendres, stockage compact. Conditionnement : colis de 10 kg.</g:description>
-      <g:link>https://wooextractor.com/pages/produits?cat=bois-chauffage</g:link>
+      <link>https://wooextractor.com/pages/produit?id=10</link>
       <g:image_link>https://images.pexels.com/photos/36091248/pexels-photo-36091248/free-photo-of-stacked-firewood-close-up-showing-rustic-texture.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=700</g:image_link>
       <g:availability>in stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>12.90 EUR</g:price>
       <g:brand>WooExtractor</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Fireplace &amp; Wood Stove Accessories</g:google_product_category>
       <g:product_type>Bois de chauffage</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
@@ -138,12 +148,13 @@
       <g:id>11</g:id>
       <g:title>Bois d&apos;allumage – petit format</g:title>
       <g:description>Petit bois calibré pour démarrer le feu rapidement, en complément de vos bûches habituelles. Conditionnement : filet de 20 L.</g:description>
-      <g:link>https://wooextractor.com/pages/produits?cat=bois-chauffage</g:link>
+      <link>https://wooextractor.com/pages/produit?id=11</link>
       <g:image_link>https://images.pexels.com/photos/1136464/pexels-photo-1136464.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=700</g:image_link>
       <g:availability>in stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>14.90 EUR</g:price>
       <g:brand>WooExtractor</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Fireplace &amp; Wood Stove Accessories</g:google_product_category>
       <g:product_type>Bois de chauffage</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
@@ -151,12 +162,13 @@
       <g:id>12</g:id>
       <g:title>Bois d&apos;allumage – grand sac</g:title>
       <g:description>Grand volume de petit bois sec, pour une saison complète d&apos;allumages sans recharge fréquente. Conditionnement : sac de 100 L.</g:description>
-      <g:link>https://wooextractor.com/pages/produits?cat=bois-chauffage</g:link>
+      <link>https://wooextractor.com/pages/produit?id=12</link>
       <g:image_link>https://images.pexels.com/photos/4153348/pexels-photo-4153348.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=700</g:image_link>
       <g:availability>in stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>24.90 EUR</g:price>
       <g:brand>WooExtractor</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Fireplace &amp; Wood Stove Accessories</g:google_product_category>
       <g:product_type>Bois de chauffage</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
@@ -164,12 +176,13 @@
       <g:id>13</g:id>
       <g:title>Pack Découverte – bois de chauffage</g:title>
       <g:description>Trois filets pour tester notre bois avant de constituer votre réserve d&apos;hiver. Idéal en première commande. Conditionnement : 3 filets de 40 L.</g:description>
-      <g:link>https://wooextractor.com/pages/produits?cat=packs</g:link>
+      <link>https://wooextractor.com/pages/produit?id=13</link>
       <g:image_link>https://images.pexels.com/photos/36788671/pexels-photo-36788671/free-photo-of-freshly-cut-firewood-logs-outdoors.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=700</g:image_link>
       <g:availability>in stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>99.90 EUR</g:price>
       <g:brand>WooExtractor</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Fireplace &amp; Wood Stove Accessories</g:google_product_category>
       <g:product_type>Packs &amp; offres</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
@@ -177,12 +190,13 @@
       <g:id>14</g:id>
       <g:title>Pack Hiver – bois + allume-feu</g:title>
       <g:description>Bûches premium et allume-feu naturel réunis dans un seul pack. Tout ce qu&apos;il faut pour démarrer la saison. Conditionnement : pack complet.</g:description>
-      <g:link>https://wooextractor.com/pages/produits?cat=packs</g:link>
+      <link>https://wooextractor.com/pages/produit?id=14</link>
       <g:image_link>https://images.pexels.com/photos/26612924/pexels-photo-26612924/free-photo-of-tree-logs-in-sawmill.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=700</g:image_link>
       <g:availability>in stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>129.90 EUR</g:price>
       <g:brand>WooExtractor</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Fireplace &amp; Wood Stove Accessories</g:google_product_category>
       <g:product_type>Packs &amp; offres</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
@@ -190,12 +204,13 @@
       <g:id>15</g:id>
       <g:title>Pack Famille – réserve de bois</g:title>
       <g:description>Réserve pensée pour un foyer utilisant le bois comme chauffage d&apos;appoint régulier tout l&apos;hiver. Conditionnement : 12 filets de 40 L.</g:description>
-      <g:link>https://wooextractor.com/pages/produits?cat=packs</g:link>
+      <link>https://wooextractor.com/pages/produit?id=15</link>
       <g:image_link>https://images.pexels.com/photos/2203077/pexels-photo-2203077.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=700</g:image_link>
       <g:availability>in stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>219.90 EUR</g:price>
       <g:brand>WooExtractor</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Fireplace &amp; Wood Stove Accessories</g:google_product_category>
       <g:product_type>Packs &amp; offres</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
@@ -203,12 +218,13 @@
       <g:id>16</g:id>
       <g:title>Pack Grand Froid – réserve hiver</g:title>
       <g:description>La réserve la plus complète pour un chauffage bois principal, pensée pour couvrir toute la saison froide. Conditionnement : 20 filets de 40 L.</g:description>
-      <g:link>https://wooextractor.com/pages/produits?cat=packs</g:link>
+      <link>https://wooextractor.com/pages/produit?id=16</link>
       <g:image_link>https://images.pexels.com/photos/247701/pexels-photo-247701.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=700</g:image_link>
       <g:availability>in stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>349.90 EUR</g:price>
       <g:brand>WooExtractor</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Fireplace &amp; Wood Stove Accessories</g:google_product_category>
       <g:product_type>Packs &amp; offres</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
@@ -216,12 +232,13 @@
       <g:id>17</g:id>
       <g:title>Pack Premium – bois haute qualité</g:title>
       <g:description>Sélection de nos essences premium (chêne, hêtre, charme) assemblée pour un rendement calorifique maximal. Conditionnement : 10 filets de 40 L.</g:description>
-      <g:link>https://wooextractor.com/pages/produits?cat=packs</g:link>
+      <link>https://wooextractor.com/pages/produit?id=17</link>
       <g:image_link>https://images.pexels.com/photos/235309/pexels-photo-235309.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=700</g:image_link>
       <g:availability>in stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>259.90 EUR</g:price>
       <g:brand>WooExtractor</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Fireplace &amp; Wood Stove Accessories</g:google_product_category>
       <g:product_type>Packs &amp; offres</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
@@ -229,12 +246,13 @@
       <g:id>18</g:id>
       <g:title>Pack Allumage – petit bois + allume-feu</g:title>
       <g:description>Petit bois calibré et allume-feu naturel réunis pour ne plus jamais galérer à démarrer votre feu. Conditionnement : pack complet.</g:description>
-      <g:link>https://wooextractor.com/pages/produits?cat=packs</g:link>
+      <link>https://wooextractor.com/pages/produit?id=18</link>
       <g:image_link>https://images.pexels.com/photos/8951848/pexels-photo-8951848.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=700</g:image_link>
       <g:availability>in stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>34.90 EUR</g:price>
       <g:brand>WooExtractor</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Fireplace &amp; Wood Stove Accessories</g:google_product_category>
       <g:product_type>Packs &amp; offres</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
@@ -242,12 +260,13 @@
       <g:id>19</g:id>
       <g:title>Allume-feu naturel</g:title>
       <g:description>Allume-feu 100 % naturel à base de fibres de bois et cire végétale. Sans odeur, sans projection. Conditionnement : boîte de 100.</g:description>
-      <g:link>https://wooextractor.com/pages/produits?cat=allumage</g:link>
+      <link>https://wooextractor.com/pages/produit?id=19</link>
       <g:image_link>https://images.pexels.com/photos/19899577/pexels-photo-19899577/free-photo-of-fire-burning-in-basket-at-night.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=700</g:image_link>
       <g:availability>in stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>9.90 EUR</g:price>
       <g:brand>WooExtractor</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Fireplace &amp; Wood Stove Accessories</g:google_product_category>
       <g:product_type>Allumage &amp; combustion</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
@@ -255,12 +274,13 @@
       <g:id>20</g:id>
       <g:title>Allume-feu en laine de bois</g:title>
       <g:description>Laine de bois imprégnée de cire, allumage instantané même par temps humide. Combustion 8 à 10 minutes. Conditionnement : boîte de 48.</g:description>
-      <g:link>https://wooextractor.com/pages/produits?cat=allumage</g:link>
+      <link>https://wooextractor.com/pages/produit?id=20</link>
       <g:image_link>https://images.pexels.com/photos/10387061/pexels-photo-10387061.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=700</g:image_link>
       <g:availability>in stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>8.90 EUR</g:price>
       <g:brand>WooExtractor</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Fireplace &amp; Wood Stove Accessories</g:google_product_category>
       <g:product_type>Allumage &amp; combustion</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
@@ -268,12 +288,13 @@
       <g:id>21</g:id>
       <g:title>Briquettes de bois</g:title>
       <g:description>Briquettes de sciure compressée à combustion lente, idéales en complément des bûches classiques. Conditionnement : colis de 10 kg.</g:description>
-      <g:link>https://wooextractor.com/pages/produits?cat=allumage</g:link>
+      <link>https://wooextractor.com/pages/produit?id=21</link>
       <g:image_link>https://images.pexels.com/photos/8075980/pexels-photo-8075980.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=700</g:image_link>
       <g:availability>in stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>11.90 EUR</g:price>
       <g:brand>WooExtractor</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Fireplace &amp; Wood Stove Accessories</g:google_product_category>
       <g:product_type>Allumage &amp; combustion</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
@@ -281,12 +302,13 @@
       <g:id>22</g:id>
       <g:title>Bûches de nuit / longue combustion</g:title>
       <g:description>Bûches spéciales à combustion très lente, conçues pour tenir le foyer allumé toute la nuit. Conditionnement : lot de 6.</g:description>
-      <g:link>https://wooextractor.com/pages/produits?cat=allumage</g:link>
+      <link>https://wooextractor.com/pages/produit?id=22</link>
       <g:image_link>https://images.pexels.com/photos/26938934/pexels-photo-26938934/free-photo-of-close-up-of-a-bonfire-in-a-garden.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=700</g:image_link>
       <g:availability>in stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>16.90 EUR</g:price>
       <g:brand>WooExtractor</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Fireplace &amp; Wood Stove Accessories</g:google_product_category>
       <g:product_type>Allumage &amp; combustion</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
@@ -294,12 +316,13 @@
       <g:id>23</g:id>
       <g:title>Granulés de bois – sac</g:title>
       <g:description>Granulés 100 % résineux certifiés, faible taux de cendres, pour poêles et chaudières à pellets. Conditionnement : sac de 15 kg.</g:description>
-      <g:link>https://wooextractor.com/pages/produits?cat=allumage</g:link>
+      <link>https://wooextractor.com/pages/produit?id=23</link>
       <g:image_link>https://images.pexels.com/photos/31797933/pexels-photo-31797933/free-photo-of-warm-campfire-flames-in-outdoor-setting.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=700</g:image_link>
       <g:availability>in stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>7.90 EUR</g:price>
       <g:brand>WooExtractor</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Fireplace &amp; Wood Stove Accessories</g:google_product_category>
       <g:product_type>Allumage &amp; combustion</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
@@ -307,12 +330,13 @@
       <g:id>24</g:id>
       <g:title>Pellets premium – sac</g:title>
       <g:description>Pellets premium à haut pouvoir calorifique et faible humidité, pour un rendement optimal de votre appareil. Conditionnement : sac de 15 kg.</g:description>
-      <g:link>https://wooextractor.com/pages/produits?cat=allumage</g:link>
+      <link>https://wooextractor.com/pages/produit?id=24</link>
       <g:image_link>https://images.pexels.com/photos/37816769/pexels-photo-37816769/free-photo-of-warm-cozy-outdoor-fire-pit-in-garden-setting.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=700</g:image_link>
       <g:availability>in stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>9.90 EUR</g:price>
       <g:brand>WooExtractor</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Fireplace &amp; Wood Stove Accessories</g:google_product_category>
       <g:product_type>Allumage &amp; combustion</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
