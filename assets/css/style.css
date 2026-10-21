@@ -605,3 +605,10 @@ h1,h2,h3{overflow-wrap:anywhere;}
 .zoom-bar{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);display:flex;gap:10px;}
 .zoom-bar .zoom-btn{font-size:1.1rem;font-weight:700;}
 .zoom-count{position:absolute;top:24px;left:20px;color:#fff;font-size:.85rem;font-weight:600;}
+
+/* ---- Informations de l'entreprise (bas du pied de page) ---- */
+.footer-legal{justify-content:center;text-align:center;border-top:1px solid rgba(255,255,255,.2);}
+.footer-company{display:flex;flex-direction:column;gap:4px;font-style:normal;line-height:1.55;}
+.footer-company strong{font-weight:700;}
+.footer-company a{color:#fff;text-decoration:underline;text-underline-offset:2px;}
+.footer-company a:hover{color:#EDEDED;}

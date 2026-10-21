@@ -182,8 +182,12 @@ function renderFooter(){
         </div>
       </div>
       <div class="footer-legal">
-        <span>© ${new Date().getFullYear()} WooExtractor — exploité par D&amp;D Bois de Chauffage, SARL — SIRET 989 318 472 00010</span>
-        <span>TVA FR62989318472</span>
+        <address class="footer-company">
+          <strong>© ${new Date().getFullYear()} WooExtractor — exploité par D&amp;D Bois de Chauffage, SARL</strong>
+          <span>Siège social : 16 rue Suzanne Lanoy, 59870 Vred, France</span>
+          <span>SIRET 989 318 472 00010 · TVA FR62989318472 · NAF/APE 4791B</span>
+          <span><a href="mailto:contact@wooextractor.com">contact@wooextractor.com</a> · WhatsApp : <a href="${WHATSAPP_URL}" target="_blank" rel="noopener">+33 7 59 30 92 00</a></span>
+        </address>
       </div>
     </div>`;
   const path = window.location.pathname;
