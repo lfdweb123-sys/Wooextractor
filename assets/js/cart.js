@@ -116,6 +116,23 @@ const Orders = {
   }
 };
 
+/* Le paiement carte se fait sur une page externe sans retour automatique : on relit le statut auprès du serveur
+   (qui interroge la passerelle) pour les commandes carte en attente. Le panier est vidé une fois le paiement confirmé. */
+Orders.refreshCardStatuses = async function(){
+  const pending = this.all().filter(o => o.paymentMethod === 'card' && o.status === 'en_attente_paiement' && o.paymentRef);
+  let changed = false;
+  for(const o of pending){
+    try{
+      const res = await fetch(`/api/verzapay-status?id=${encodeURIComponent(o.paymentRef)}`);
+      if(!res.ok) continue;
+      const { status } = await res.json();
+      if(status === 'completed'){ this.update(o.id, { status: 'payee' }); Cart.clear(); changed = true; }
+      else if(status === 'failed'){ this.update(o.id, { status: 'erreur_paiement' }); changed = true; }
+    }catch(e){ /* réseau : on réessaiera au prochain chargement */ }
+  }
+  return changed;
+};
+
 function generateOrderId(){
   const d = new Date();
   const stamp = d.getFullYear().toString().slice(2) + String(d.getMonth()+1).padStart(2,'0') + String(d.getDate()).padStart(2,'0');

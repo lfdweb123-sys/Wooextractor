@@ -13,11 +13,8 @@ nom commercial **WooExtractor**.
 
 ## Modes de paiement
 
-1. **Carte bancaire — Stripe.** Champ de carte intégré (Stripe Elements) sur
-   la page de commande, aucune redirection. `api/stripe-create-intent.js`
-   crée le paiement, le navigateur le confirme, puis `api/stripe-webhook.js`
-   (seule source fiable et signée) envoie un e-mail de commande au marchand
-   via Brevo.
+1. **Carte bancaire — Verzapay.** Redirection vers la page de paiement sécurisée (3D Secure) de la passerelle ; aucun champ carte sur le site.
+   `api/verzapay-create.js` **recalcule le montant côté serveur** (catalogue + règles de livraison), crée le paiement en EUR (la passerelle convertit vers la devise du pays du client) et vérifie que le montant débité confirmé est exactement celui attendu, puis envoie le détail de la commande au marchand par e-mail **avant** la redirection. `api/verzapay-webhook.js` (jeton secret dans l'URL + relecture du statut par l'API, car la passerelle ne signe pas ses webhooks) envoie « paiement confirmé ». `api/verzapay-status.js` donne le statut à la page de confirmation et au suivi (la passerelle ne ramène pas le client sur le site). `api/countries.js` fournit les pays (Europe et Amériques, France en premier) synchronisés depuis la passerelle.
 2. **Cryptomonnaie — NowPayments.** Facture hébergée, redirection vers la
    page de paiement NowPayments puis retour sur `order-success.html`.
 3. **Virement bancaire.** Aucune passerelle : la commande est enregistrée,
@@ -50,9 +47,11 @@ Aucun e-mail n'est jamais envoyé automatiquement au client.
 /assets/js/icons.js             Icônes SVG en ligne (aucune emoji sur le site)
 /assets/js/*.js                 Logique de chaque page
 /lib/brevo.js                   Envoi d'e-mails de notification (Brevo)
-/api/stripe-config.js           Fournit la clé publiable Stripe au client
-/api/stripe-create-intent.js    Crée le paiement carte (PaymentIntent)
-/api/stripe-webhook.js          Confirme le paiement carte, notifie le marchand
+/api/verzapay-create.js         Crée le paiement carte (montant recalculé serveur), notifie le marchand
+/api/verzapay-webhook.js        Confirme le paiement carte (jeton + relecture API)
+/api/verzapay-status.js         Statut d'un paiement carte
+/api/countries.js               Pays proposés (Europe et Amériques, synchronisés)
+/lib/verzapay.js, /lib/pricing.js  Client de la passerelle, calcul serveur des prix
 /api/nowpayments.js             Crée une facture crypto
 /api/nowpayments-ipn.js         Webhook crypto, notifie le marchand
 /api/notify-order.js            Notifie le marchand (virement / sans paiement)
@@ -62,7 +61,7 @@ Aucun e-mail n'est jamais envoyé automatiquement au client.
 
 1. Poussez ce dossier sur GitHub puis importez le projet dans Vercel.
 2. Vercel détecte automatiquement `/api` comme fonctions serverless Node et
-   installe `package.json` (dépendance `stripe`) au build ; aucun réglage de
+   installe `package.json`  au build ; aucun réglage de
    build n'est nécessaire pour le site statique.
 3. Renseignez les variables d'environnement ci-dessous.
 4. Déployez. Le site est servi à la racine, les pages sous `/pages/...`.
@@ -71,9 +70,8 @@ Aucun e-mail n'est jamais envoyé automatiquement au client.
 
 | Variable | Description |
 |---|---|
-| `STRIPE_SECRET_KEY` | Clé secrète Stripe (mode test ou live) |
-| `STRIPE_PUBLISHABLE_KEY` | Clé publiable Stripe, transmise au navigateur |
-| `STRIPE_WEBHOOK_SECRET` | Secret de signature du webhook Stripe (`payment_intent.succeeded`) |
+| `VERZAPAY_API_KEY` | Clé secrète de la passerelle carte (`vpz_sk_...`) |
+| `VERZAPAY_WEBHOOK_TOKEN` | Jeton secret (24+ caractères) à ajouter à l'URL du webhook : `https://wooextractor.com/api/verzapay-webhook?k=<jeton>` |
 | `NOWPAYMENTS_API_KEY` | Clé API NowPayments |
 | `NOWPAYMENTS_IPN_SECRET` | Secret IPN NowPayments, pour vérifier la signature du webhook |
 | `BREVO_API_KEY` | Clé API Brevo (transactionnel e-mail) |
@@ -81,12 +79,11 @@ Aucun e-mail n'est jamais envoyé automatiquement au client.
 | `SHOP_EMAIL` | Adresse expéditrice des e-mails (doit être validée dans Brevo) |
 | `NEXT_PUBLIC_BASE_URL` | URL publique du site, ex. `https://wooextractor.com` (sans slash final) |
 
-### Configurer le webhook Stripe
-
-Dans le tableau de bord Stripe → Developers → Webhooks, ajoutez une
-destination vers `https://VOTRE-DOMAINE/api/stripe-webhook` écoutant
-l'évènement `payment_intent.succeeded`, puis copiez le secret de signature
-dans `STRIPE_WEBHOOK_SECRET`.
+### Configurer la passerelle carte
+1. Validez le compte marchand (KYC) chez la passerelle et créez la clé secrète → `VERZAPAY_API_KEY`.
+2. Générez un jeton aléatoire de 24+ caractères → `VERZAPAY_WEBHOOK_TOKEN`.
+3. Dans l'espace Développeur de la passerelle, renseignez l'URL de webhook : `https://wooextractor.com/api/verzapay-webhook?k=<votre jeton>` (HTTPS obligatoire).
+4. Testez un paiement sans le finaliser : la page doit afficher le montant exact, en euros (ou dans la devise du pays du client).
 
 ## Points importants à vérifier avant mise en production
 
@@ -134,3 +131,6 @@ node scripts/generate-feed.mjs
 Le tag gtag.js (`G-W43KE8BBTB`) et Google Tag Manager (`GTM-WWLR2PTP`) sont
 installés dans le `<head>` de toutes les pages HTML, avec le `noscript` GTM
 juste après `<body>`.
+
+## Politiques (conformité Google Merchant Center)
+Pages : `/pages/politique-de-retour` (**retour sous 30 jours**, **remboursement sous 14 jours**, frais de retour à la charge du client sauf défaut/erreur), `/pages/livraison`, `/pages/conditions-generales-de-vente`, `/pages/confidentialite`, `/pages/cookies`, `/pages/mentions-legales`, liées dans le pied de page et le sitemap. Dans Merchant Center (Paramètres > Expédition et retours), saisissez les mêmes valeurs : retours 30 jours, frais de retour payants (gratuits en cas de défaut), délai de traitement 2-3 jours, expédition offerte dès 150 €, 9,90 € sinon, France métropolitaine.

@@ -3,11 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "WooExtractor — boutique de bois de chauffage. Site statique + fonctions serverless Vercel (Stripe, NowPayments, virement bancaire, commande sans paiement, notifications Brevo). Aucune base de données, aucun tableau de bord admin.",
+  "description": "WooExtractor — boutique de bois de chauffage. Site statique + fonctions serverless Vercel (paiement par carte (Verzapay), NowPayments, virement bancaire, commande sans paiement, notifications Brevo). Aucune base de données, aucun tableau de bord admin.",
   "engines": {
     "node": ">=18.x"
   },
-  "dependencies": {
-    "stripe": "^16.12.0"
-  }
+  "dependencies": {}
 }

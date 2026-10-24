@@ -296,8 +296,6 @@ legend{font-family:var(--font-display);font-weight:700;font-size:1.15rem;padding
 .crypto-select{margin:14px 0 0 26px;}
 .card-field-wrap{margin:14px 0 0 26px;}
 .card-element-box{border:1px solid var(--birch);border-radius:var(--radius-sm);padding:13px 14px;background:#fff;}
-.card-element-box.StripeElement--focus{border-color:var(--ember);}
-.card-element-box.StripeElement--invalid{border-color:var(--ember);}
 .bank-details-box{margin:14px 0 0 26px;background:var(--birch-soft);border:1px solid var(--birch);border-radius:var(--radius-sm);padding:16px;}
 .bank-details-box .legal-table td{font-size:0.85rem;padding:6px 0;}
 

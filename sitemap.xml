@@ -9,4 +9,9 @@
   <url><loc>https://wooextractor.com/pages/paiement-carte-bancaire</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
   <url><loc>https://wooextractor.com/pages/paiement-cryptomonnaie</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
   <url><loc>https://wooextractor.com/pages/paiement-virement-bancaire</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://wooextractor.com/pages/politique-de-retour</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://wooextractor.com/pages/livraison</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://wooextractor.com/pages/conditions-generales-de-vente</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://wooextractor.com/pages/confidentialite</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://wooextractor.com/pages/cookies</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
 </urlset>

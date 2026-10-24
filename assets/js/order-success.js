@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   hydrateIcons();
 
   const params = new URLSearchParams(window.location.search);
@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if(!failed){ Cart.clear(); }
   }
   Orders.clearPending();
+  if(order.paymentMethod === 'card'){ await Orders.refreshCardStatuses(); }
 
   const refreshed = Orders.get(order.id);
   fallback.style.display = 'none';
@@ -36,7 +37,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const intro = found.querySelector('.confirm-hero p');
   const noteBox = document.getElementById('confirm-note');
 
-  if(refreshed.status === 'erreur_paiement'){
+  if(refreshed.paymentMethod === 'card' && refreshed.status === 'en_attente_paiement'){
+    title.textContent = 'Paiement en cours de vérification';
+    intro.textContent = 'Si vous avez terminé le paiement sur la page sécurisée, il sera confirmé dans quelques instants : rechargez cette page ou consultez le suivi de commande.';
+  }else if(refreshed.status === 'erreur_paiement'){
     title.textContent = 'Le paiement n\'a pas abouti';
     intro.textContent = 'Votre commande reste enregistrée sur cet appareil. Vous pouvez réessayer le paiement depuis votre panier.';
   }else if(refreshed.paymentMethod === 'transfer'){

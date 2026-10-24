@@ -1,5 +1,3 @@
-const COUNTRY_ISO = { France: 'FR', Belgique: 'BE', Suisse: 'CH', Luxembourg: 'LU' };
-
 document.addEventListener('DOMContentLoaded', () => {
   hydrateIcons();
 
@@ -45,30 +43,18 @@ document.addEventListener('DOMContentLoaded', () => {
   }));
   syncPayOptions();
 
-  /* ---- Champ carte Stripe ---- */
-  let stripe = null, cardElement = null;
-  (async function setupStripe(){
+  /* ---- Pays : liste synchronisée (Europe et Amériques, France en premier) ---- */
+  (async function loadCountries(){
     try{
-      const res = await fetch('/api/stripe-config');
+      const res = await fetch('/api/countries');
       const data = await res.json();
-      if(!res.ok || !data.publishableKey) throw new Error('missing key');
-      stripe = Stripe(data.publishableKey);
-      const elements = stripe.elements();
-      cardElement = elements.create('card', {
-        style: {
-          base: { fontFamily: 'Inter, Arial, sans-serif', fontSize: '16px', color: '#201A15', '::placeholder': { color: '#8A7F72' } },
-          invalid: { color: '#A8391B' }
-        }
-      });
-      cardElement.mount('#card-element');
-      cardElement.on('change', (event) => {
-        document.getElementById('card-errors').textContent = event.error ? event.error.message : '';
-      });
+      if(!res.ok || !Array.isArray(data.countries) || !data.countries.length) return;
+      const select = document.getElementById('country');
+      const current = select.value;
+      select.innerHTML = data.countries.map(c => `<option value="${c.name}" data-code="${c.code}">${c.name}</option>`).join('');
+      if(Array.from(select.options).some(o => o.value === current)) select.value = current;
     }catch(err){
-      console.error('Stripe indisponible :', err);
-      const box = document.getElementById('card-element');
-      if(box) box.innerHTML = '';
-      document.getElementById('card-errors').textContent = 'Le paiement par carte est momentanément indisponible. Choisissez un autre mode de paiement.';
+      console.warn('Liste des pays indisponible, liste par défaut conservée :', err);
     }
   })();
 
@@ -264,6 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
       postcode: document.getElementById('postcode').value.trim(),
       city: document.getElementById('city').value.trim(),
       country: document.getElementById('country').value,
+      countryCode: document.getElementById('country').selectedOptions[0]?.dataset.code || 'FR',
       note: document.getElementById('note').value.trim()
     };
     const paymentMethod = currentMethod();
@@ -284,56 +271,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     submitBtn.disabled = true;
 
-    /* ---- Carte bancaire (Stripe) ---- */
+    /* ---- Carte bancaire : redirection vers la page de paiement sécurisée ---- */
     if(paymentMethod === 'card'){
-      if(!stripe || !cardElement){
-        setMsg('Le paiement par carte est momentanément indisponible. Choisissez un autre mode de paiement.', 'error');
-        resetSubmitButton();
-        return;
-      }
-      submitBtn.textContent = 'Paiement en cours…';
+      submitBtn.textContent = 'Redirection vers le paiement…';
       try{
-        const itemsSummary = order.items.map(it => `${it.qty} x ${it.name}`).join('; ');
-        const intentRes = await fetch('/api/stripe-create-intent', {
+        const res = await fetch('/api/verzapay-create', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            amount: order.total, currency: 'EUR', order_id: order.id, customer,
-            items: itemsSummary, subtotal: order.subtotal, shipping: order.shipping, total: order.total
-          })
+          // Seuls les identifiants et quantités comptent : le prix est recalculé par le serveur.
+          body: JSON.stringify({ order: { id: order.id, customer, items: order.items.map(it => ({ id: it.id, qty: it.qty })) } })
         });
-        const intentData = await intentRes.json();
-        if(!intentRes.ok || !intentData.clientSecret){
-          throw new Error(intentData.message || 'Impossible d\'initialiser le paiement par carte.');
-        }
+        const data = await res.json().catch(() => ({}));
+        if(!res.ok || !data.payment_url) throw new Error(data.message || 'Impossible d\'initialiser le paiement par carte.');
 
-        const result = await stripe.confirmCardPayment(intentData.clientSecret, {
-          payment_method: {
-            card: cardElement,
-            billing_details: {
-              name: `${customer.firstname} ${customer.lastname}`,
-              email: customer.email,
-              phone: customer.phone,
-              address: {
-                line1: customer.address,
-                postal_code: customer.postcode,
-                city: customer.city,
-                country: COUNTRY_ISO[customer.country] || 'FR'
-              }
-            }
-          }
-        });
-
-        if(result.error) throw new Error(result.error.message);
-        if(!result.paymentIntent || result.paymentIntent.status !== 'succeeded'){
-          throw new Error('Le paiement n\'a pas pu être confirmé.');
-        }
-
-        order.status = 'payee';
+        // Le serveur a recalculé les prix : on enregistre la commande avec ses valeurs.
+        order.items = data.items; order.subtotal = data.subtotal; order.shipping = data.shipping; order.total = data.total;
+        order.paymentRef = data.reference;
         Orders.create(order);
-        Cart.clear();
-        window.location.href = `/pages/order-success?order_id=${encodeURIComponent(order.id)}`;
-
+        window.location.href = data.payment_url;
       }catch(err){
         console.error('Erreur de paiement carte :', err);
         setMsg(err.message || 'Le paiement par carte a échoué. Vérifiez vos informations ou réessayez.', 'error');

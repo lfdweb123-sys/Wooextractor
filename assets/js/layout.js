@@ -169,7 +169,8 @@ function renderFooter(){
             <li><a href="/pages/suivi">Suivi de commande</a></li>
             <li><a href="/pages/contact">Contact</a></li>
             <li><a href="${WHATSAPP_URL}" target="_blank" rel="noopener">WhatsApp : +33 7 59 30 92 00</a></li>
-            <li><a href="/pages/mentions-legales">Mentions légales</a></li>
+            <li><a href="/pages/livraison">Livraison</a></li>
+            <li><a href="/pages/politique-de-retour">Retours et remboursements</a></li>
           </ul>
         </div>
         <div>
@@ -178,6 +179,13 @@ function renderFooter(){
             <li><a href="/pages/paiement-carte-bancaire">Carte bancaire</a></li>
             <li><a href="/pages/paiement-cryptomonnaie">Cryptomonnaie</a></li>
             <li><a href="/pages/paiement-virement-bancaire">Virement bancaire</a></li>
+          </ul>
+          <h4 style="margin-top:18px;">Informations légales</h4>
+          <ul>
+            <li><a href="/pages/conditions-generales-de-vente">Conditions générales de vente</a></li>
+            <li><a href="/pages/mentions-legales">Mentions légales</a></li>
+            <li><a href="/pages/confidentialite">Confidentialité</a></li>
+            <li><a href="/pages/cookies">Cookies</a></li>
           </ul>
         </div>
       </div>
@@ -212,4 +220,5 @@ document.addEventListener('DOMContentLoaded', () => {
   try{ renderHeader(); }catch(err){ console.error('Erreur en-tête :', err); }
   try{ renderFooter(); }catch(err){ console.error('Erreur pied de page :', err); }
   try{ renderWhatsAppChat(); }catch(err){ console.error('Erreur WhatsApp :', err); }
+  try{ if(typeof Orders !== 'undefined') Orders.refreshCardStatuses().then(changed => { if(changed && typeof renderHeader === 'function') renderHeader(); }); }catch(err){ console.error('Statut paiement :', err); }
 });

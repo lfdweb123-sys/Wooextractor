@@ -71,11 +71,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <div class="form-field"><label for="city">Ville</label><input id="city" name="city" type="text" required><span class="field-error">Merci d'indiquer votre ville.</span></div>
               <div class="form-field full"><label for="country">Pays</label>
                 <select id="country" name="country">
-                  <option value="France" selected>France</option>
-                  <option value="Belgique">Belgique</option>
-                  <option value="Suisse">Suisse</option>
-                  <option value="Luxembourg">Luxembourg</option>
+                  <option value="France" data-code="FR" selected>France</option>
                 </select>
+                <small id="country-hint" style="color:var(--muted);font-size:0.8rem;">Pays d'Europe et des Amériques. Le numéro de téléphone doit correspondre au pays choisi. Livraison standard en France métropolitaine ; pour un autre pays, nous vous contactons pour confirmer la livraison et ses frais.</small>
               </div>
               <div class="form-field full"><label for="note">Note de livraison (facultatif)</label><textarea id="note" name="note" rows="3" placeholder="Portail, étage, créneau de livraison…"></textarea></div>
             </div>
@@ -121,10 +119,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <label class="pay-option" data-pay-option="card">
               <div class="pay-option-head"><span><input type="radio" name="payment" value="card"> Carte bancaire</span> <span data-icon="card"></span></div>
               <p>Paiement sécurisé par carte bancaire. Vos coordonnées bancaires ne sont jamais conservées sur nos serveurs.</p>
-              <div class="card-field-wrap">
-                <div id="card-element" class="card-element-box"></div>
-                <div id="card-errors" class="field-error" style="display:block;min-height:16px;"></div>
-              </div>
+              <p style="font-size:0.85rem;margin-top:8px;">Vous serez redirigé vers une page de paiement sécurisée (3D Secure) pour saisir votre carte. Le montant est affiché dans la devise de votre pays.</p>
             </label>
           </fieldset>
 
@@ -153,6 +148,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           
           <div id="form-msg" class="form-msg"></div>
           <button type="submit" class="btn btn-primary btn-block" id="submit-btn" style="margin-top:8px;">Confirmer la commande</button>
+          <p style="font-size:0.8rem;margin-top:10px;color:var(--muted);">En passant commande, vous acceptez nos <a href="/pages/conditions-generales-de-vente" target="_blank" rel="noopener" style="color:var(--ember);">conditions générales de vente</a>. Retour possible sous 30 jours, remboursement sous 14 jours : <a href="/pages/politique-de-retour" target="_blank" rel="noopener" style="color:var(--ember);">politique de retour</a>.</p>
           <p class="order-note">Aucune donnée n'est stockée sur un serveur : votre commande reste enregistrée sur cet appareil pour que vous puissiez la retrouver depuis la page « Suivi de commande ».</p>
         </div>
 
@@ -170,7 +166,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <footer id="site-footer"></footer>
 
-<script src="https://js.stripe.com/v3/"></script>
 <script src="/assets/js/icons.js"></script>
 <script src="/assets/js/products.js"></script>
 <script src="/assets/js/cart.js"></script>
