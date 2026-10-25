@@ -282,7 +282,7 @@ document.addEventListener('DOMContentLoaded', () => {
           body: JSON.stringify({ order: { id: order.id, customer, items: order.items.map(it => ({ id: it.id, qty: it.qty })) } })
         });
         const data = await res.json().catch(() => ({}));
-        if(!res.ok || !data.payment_url) throw new Error(data.message || 'Impossible d\'initialiser le paiement par carte.');
+        if(!res.ok || !data.payment_url){ if(data.detail) console.error('Diagnostic paiement :', data.detail); throw new Error(data.message || 'Impossible d\'initialiser le paiement par carte.'); }
 
         // Le serveur a recalculé les prix : on enregistre la commande avec ses valeurs.
         order.items = data.items; order.subtotal = data.subtotal; order.shipping = data.shipping; order.total = data.total;

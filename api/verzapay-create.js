@@ -49,7 +49,8 @@ export default async function handler(req, res) {
     });
   } catch (e) {
     console.error('verzapay-create : échec paiement', orderId, e.message);
-    return res.status(502).json({ message: 'Le paiement par carte n\'a pas pu être initialisé. Réessayez ou choisissez un autre mode de paiement.' });
+    // PAYMENT_DEBUG=1 (temporaire) : renvoie la cause technique pour le diagnostic ; ne jamais le laisser actif en production.
+    return res.status(502).json({ message: 'Le paiement par carte n\'a pas pu être initialisé. Réessayez ou choisissez un autre mode de paiement.', ...(process.env.PAYMENT_DEBUG === '1' ? { detail: e.message } : {}) });
   }
 
   const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
