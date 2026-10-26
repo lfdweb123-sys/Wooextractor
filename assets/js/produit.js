@@ -167,7 +167,16 @@ document.addEventListener('DOMContentLoaded', () => {
     offers:{ '@type':'Offer', priceCurrency:'EUR', price:p.price.toFixed(2),
       availability:'https://schema.org/InStock',
       itemCondition: isUsed ? 'https://schema.org/UsedCondition' : 'https://schema.org/NewCondition',
-      url:`https://wooextractor.com/pages/produit?id=${p.id}` }
+      url:`https://wooextractor.com/pages/produit?id=${p.id}`,
+      // Politique de retour (30 jours) et d'expédition : champs requis par Google pour les offres produit
+      hasMerchantReturnPolicy:{ '@type':'MerchantReturnPolicy', applicableCountry:'FR',
+        returnPolicyCategory:'https://schema.org/MerchantReturnFiniteReturnWindow', merchantReturnDays:30,
+        returnMethod:'https://schema.org/ReturnByMail', returnFees:'https://schema.org/ReturnFeesCustomerResponsibility',
+        refundType:'https://schema.org/FullRefund', merchantReturnLink:'https://wooextractor.com/pages/politique-de-retour' },
+      shippingDetails:{ '@type':'OfferShippingDetails',
+        shippingRate:{ '@type':'MonetaryAmount', value:(p.price >= FREE_SHIPPING_THRESHOLD ? 0 : SHIPPING_FLAT).toFixed(2), currency:'EUR' },
+        shippingDestination:{ '@type':'DefinedRegion', addressCountry:'FR' },
+        deliveryTime:{ '@type':'ShippingDeliveryTime', handlingTime:{ '@type':'QuantitativeValue', minValue:2, maxValue:3, unitCode:'DAY' } } } }
   });
   document.head.appendChild(ld);
   }
