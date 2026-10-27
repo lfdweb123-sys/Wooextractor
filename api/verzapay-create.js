@@ -1,8 +1,8 @@
 // api/verzapay-create.js — Crée le paiement par carte (page de paiement hébergée, 3D Secure) et renvoie l'URL de redirection.
+//  AUCUN e-mail n'est envoyé ici : le détail de la commande voyage dans les métadonnées du paiement et n'est transmis par e-mail
+//  qu'à la confirmation du paiement (api/verzapay-webhook.js).
 //  - Le montant est recalculé ici à partir du catalogue : le prix envoyé par le navigateur est ignoré.
-//  - Le détail complet de la commande est envoyé par e-mail au marchand AVANT la redirection (aucune base de données :
-//    c'est la seule trace côté serveur). Si cet e-mail échoue, la commande est refusée.
-import { sendBrevoEmail, buildOrderEmailHtml } from '../lib/brevo.js';
+import { encodeOrder } from '../lib/order-codec.js';
 import { createVerzaPayment, loadCountries, normalizePhone, FALLBACK_COUNTRIES } from '../lib/verzapay.js';
 import { priceOrder } from '../lib/pricing.js';
 
@@ -41,31 +41,27 @@ export default async function handler(req, res) {
     return res.status(400).json({ message: 'Informations de livraison incomplètes.' });
   }
 
+  let metadata;
+  try {
+    metadata = encodeOrder({
+      id: orderId, fn: customer.firstname, ln: customer.lastname, e: email, p: customer.phone,
+      a: customer.address, pc: customer.postcode, ci: customer.city, co: customer.country, n: customer.note,
+      i: priced.items.map((i) => [i.id, i.qty]),
+    });
+  } catch (e) {
+    return res.status(400).json({ message: e.message });
+  }
+
   let pay;
   try {
     pay = await createVerzaPayment({
       amountEur: priced.total, merchantReference: orderId, description: 'Commande',
-      name: `${customer.firstname} ${customer.lastname}`, phoneDigits: phone,
+      name: `${customer.firstname} ${customer.lastname}`, phoneDigits: phone, email, metadata,
     });
   } catch (e) {
     console.error('verzapay-create : échec paiement', orderId, e.message);
     // PAYMENT_DEBUG=1 (temporaire) : renvoie la cause technique pour le diagnostic ; ne jamais le laisser actif en production.
     return res.status(502).json({ message: 'Le paiement par carte n\'a pas pu être initialisé. Réessayez ou choisissez un autre mode de paiement.', ...(process.env.PAYMENT_DEBUG === '1' ? { detail: e.message } : {}) });
-  }
-
-  const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
-  const full = { ...order, id: orderId, paymentMethod: 'card', customer, ...priced, paymentRef: pay.reference };
-  if (!ADMIN_EMAIL) {
-    console.error('ADMIN_EMAIL manquant : commande carte refusée (aucune trace possible).');
-    return res.status(500).json({ message: 'Configuration serveur incomplète.' });
-  }
-  const mail = await sendBrevoEmail({
-    to: ADMIN_EMAIL, replyTo: email,
-    subject: `Commande ${orderId} — paiement carte en cours (réf. ${pay.reference})`,
-    html: buildOrderEmailHtml(full, { headline: `Paiement carte en cours — réf. ${pay.reference}` }),
-  });
-  if (!mail.ok) {
-    return res.status(502).json({ message: 'Votre commande n\'a pas pu être enregistrée (envoi e-mail impossible). Vous n\'avez pas été débité, réessayez.' });
   }
 
   return res.status(200).json({ payment_url: pay.paymentUrl, reference: pay.reference, total: priced.total, items: priced.items, subtotal: priced.subtotal, shipping: priced.shipping });

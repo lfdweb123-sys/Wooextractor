@@ -4,8 +4,10 @@
 //   2) le contenu reçu n'est JAMAIS cru : statut, montant et référence sont relus via GET /payments/{id} avec notre clé secrète ;
 //   3) déduplication en mémoire d'instance (best effort, aucune base de données).
 import crypto from 'node:crypto';
-import { sendBrevoEmail, emailLayout, infoRow, esc } from '../lib/brevo.js';
+import { sendBrevoEmail, buildOrderEmailHtml, emailLayout, infoRow, esc } from '../lib/brevo.js';
 import { getVerzaPayment } from '../lib/verzapay.js';
+import { decodeOrder } from '../lib/order-codec.js';
+import { priceOrder } from '../lib/pricing.js';
 
 const done = new Set();
 
@@ -33,28 +35,49 @@ export default async function handler(req, res) {
     if (pay.status !== 'completed') return res.status(200).json({ received: true, status: pay.status });
     if (pay.currency !== 'EUR') return res.status(200).json({ received: true, ignored: 'devise inattendue' });
 
+    // La commande (jamais envoyée avant le paiement) est reconstruite à partir des métadonnées relues par l'API.
     const orderId = /DD-[A-Z0-9-]{4,30}/.exec(pay.merchantReference)?.[0] || '';
     const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
-    if (ADMIN_EMAIL) {
-      const r = await sendBrevoEmail({
-        to: ADMIN_EMAIL,
-        subject: `Paiement carte confirmé — ${orderId || paymentId}`,
-        html: emailLayout({
-          subtitle: 'Notification de paiement',
-          preheader: `Paiement carte confirmé — ${orderId || paymentId}`,
-          body: `
-          <h2 class="title" style="margin:0 0 16px;font-size:20px;line-height:1.3;color:#201A15;">Paiement carte confirmé</h2>
-          <p style="margin:0 0 12px;font-size:13px;color:#6B5D4F;">Statut « completed » vérifié auprès de l'API de la passerelle.</p>
+    if (!ADMIN_EMAIL) {
+      console.warn('ADMIN_EMAIL manquant : notification non envoyée.');
+    } else {
+      const m = decodeOrder(pay.metadata);
+      let order = null;
+      if (m && Array.isArray(m.i)) {
+        try {
+          const priced = priceOrder(m.i.map(([id, qty]) => ({ id, qty })));
+          order = {
+            id: orderId || String(m.id || ''), paymentMethod: 'card', paymentRef: paymentId, ...priced,
+            customer: { firstname: m.fn, lastname: m.ln, email: m.e || pay.customerEmail, phone: m.p, address: m.a, postcode: m.pc, city: m.ci, country: m.co, note: m.n },
+          };
+        } catch (e) {
+          console.error('verzapay-webhook : commande illisible', paymentId, e.message);
+        }
+      }
+      const r = order
+        ? await sendBrevoEmail({
+            to: ADMIN_EMAIL, replyTo: order.customer.email || undefined,
+            subject: `Commande ${order.id} — paiement carte confirmé`,
+            html: buildOrderEmailHtml(order, { headline: `Commande payée par carte — réf. ${paymentId}` }),
+          })
+        : await sendBrevoEmail({
+            to: ADMIN_EMAIL,
+            subject: `ALERTE — paiement carte reçu sans détail de commande (${orderId || paymentId})`,
+            html: emailLayout({
+              subtitle: 'Notification de paiement',
+              preheader: 'Paiement reçu : détail de commande introuvable',
+              body: `
+          <h2 class="title" style="margin:0 0 16px;font-size:20px;line-height:1.3;color:#B3261E;">Paiement reçu, détail de commande introuvable</h2>
+          <p style="margin:0 0 12px;font-size:13px;color:#6B5D4F;">Le paiement est confirmé (statut « completed » vérifié par l'API) mais les métadonnées de commande sont absentes ou illisibles. Rapprochez-le manuellement.</p>
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-            ${infoRow('Commande', esc(orderId || 'non retrouvée — rapprocher par référence'))}
+            ${infoRow('Commande', esc(orderId || 'inconnue'))}
             ${infoRow('Montant payé', `${esc(pay.amount.toFixed(2))} EUR`)}
+            ${infoRow('E-mail client', esc(pay.customerEmail || '—'))}
             ${infoRow('Réf. paiement', esc(paymentId))}
           </table>`,
-        }),
-      });
+            }),
+          });
       if (!r.ok) throw new Error('E-mail marchand non envoyé');
-    } else {
-      console.warn('ADMIN_EMAIL manquant : notification non envoyée.');
     }
     done.add(paymentId);
   } catch (e) {
