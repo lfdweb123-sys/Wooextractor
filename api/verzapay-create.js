@@ -44,7 +44,7 @@ export default async function handler(req, res) {
   let pay;
   try {
     pay = await createVerzaPayment({
-      amountEur: priced.total, merchantReference: orderId, description: `Commande ${orderId}`,
+      amountEur: priced.total, merchantReference: orderId, description: 'Commande',
       name: `${customer.firstname} ${customer.lastname}`, phoneDigits: phone,
     });
   } catch (e) {
